@@ -49,7 +49,7 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "Bee")
     let spider = SKSpriteNode(imageNamed: "Spider")
     
-    var spiderWidth: CGFloat = 1
+    var spiderWidth: CGFloat = 2
     
     override func didMoveToView(view: SKView) {
         spiderWidth = size.width / NUM_SPIDERS
