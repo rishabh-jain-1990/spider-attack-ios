@@ -49,9 +49,10 @@ class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "Bee")
     let spider = SKSpriteNode(imageNamed: "Spider")
     
-    var spiderWidth: CGFloat = 2
+    var spiderWidth : CGFloat = 1
     
     override func didMoveToView(view: SKView) {
+        
         spiderWidth = size.width / NUM_SPIDERS
         
         background.zPosition = 1
@@ -97,7 +98,7 @@ class GameScene: SKScene {
     
     func upAction() {
         let revY = size.height - CGFloat(arc4random_uniform(UInt32(size.height / 2 - spider.size.height))) - spider.size.height / 2;
-        let actionRev = SKAction.moveTo(CGPoint(x: spider.position.x, y: revY), duration: NSTimeInterval(revY / (spiderWidth / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND));
+        let actionRev = SKAction.moveTo(CGPoint(x: spider.position.x, y: revY), duration: NSTimeInterval(revY / ((spiderWidth / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND)));
         spider.runAction(SKAction.sequence([actionRev, SKAction.runBlock(downAction)]))
         player.position.x = player.position.x - (spiderWidth / BEE_SPEED_DIVIDER)
     }

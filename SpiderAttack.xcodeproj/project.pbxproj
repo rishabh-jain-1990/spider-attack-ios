@@ -15,6 +15,8 @@
 		65BC75821D702E290074D97C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65BC75801D702E290074D97C /* LaunchScreen.storyboard */; };
 		65BC758D1D702E290074D97C /* SpiderAttackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC758C1D702E290074D97C /* SpiderAttackTests.swift */; };
 		65BC759A1D776E770074D97C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC75991D776E770074D97C /* Constants.swift */; };
+		65BC759D1D78492E0074D97C /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC759C1D78492E0074D97C /* Spider.swift */; };
+		65BC759F1D7849660074D97C /* Bee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC759E1D7849660074D97C /* Bee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		65BC758C1D702E290074D97C /* SpiderAttackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiderAttackTests.swift; sourceTree = "<group>"; };
 		65BC758E1D702E290074D97C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65BC75991D776E770074D97C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		65BC759C1D78492E0074D97C /* Spider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
+		65BC759E1D7849660074D97C /* Bee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 		65BC75721D702E290074D97C /* SpiderAttack */ = {
 			isa = PBXGroup;
 			children = (
+				65BC759B1D7848F40074D97C /* Model */,
 				65BC75731D702E290074D97C /* AppDelegate.swift */,
 				65BC75771D702E290074D97C /* GameScene.swift */,
 				65BC75791D702E290074D97C /* GameViewController.swift */,
@@ -100,6 +105,15 @@
 				65BC758E1D702E290074D97C /* Info.plist */,
 			);
 			path = SpiderAttackTests;
+			sourceTree = "<group>";
+		};
+		65BC759B1D7848F40074D97C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				65BC759C1D78492E0074D97C /* Spider.swift */,
+				65BC759E1D7849660074D97C /* Bee.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,9 +217,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65BC759D1D78492E0074D97C /* Spider.swift in Sources */,
 				65BC75781D702E290074D97C /* GameScene.swift in Sources */,
 				65BC757A1D702E290074D97C /* GameViewController.swift in Sources */,
 				65BC75741D702E290074D97C /* AppDelegate.swift in Sources */,
+				65BC759F1D7849660074D97C /* Bee.swift in Sources */,
 				65BC759A1D776E770074D97C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
