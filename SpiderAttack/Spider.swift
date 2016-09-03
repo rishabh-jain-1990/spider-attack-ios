@@ -8,13 +8,12 @@
 
 import Foundation
 import SpriteKit
+import Dispatch
 
 class Spider : SKSpriteNode
 {
     let screenHeight :CGFloat
     let line :SKSpriteNode
-    var countdown = 0
-    var timer :NSTimer!
     
     init(screenHeight: CGFloat, line: SKSpriteNode)
     {
@@ -31,29 +30,11 @@ class Spider : SKSpriteNode
     
     func startTimer(countdown: Int)
     {
-        self.countdown = countdown
         if countdown == 0
         {
-            print("Countdown skipped")
             downAction()
         }else{
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target:self, selector: Selector(start()), userInfo: nil, repeats: false)
-        }
-    }
-    
-    func start()
-    {
-        countdown -= 1
-        if countdown <= 0
-        {
-            print("Countdown ended")
-            if timer != nil
-            {
-             timer.invalidate()
-            }
-            
-            print("timer invalidated")
-            downAction()
+            performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown))
         }
     }
     
@@ -75,6 +56,5 @@ class Spider : SKSpriteNode
         
         let lineAction = SKAction.resizeToHeight(screenHeight - size.height / 2, duration: duration)
         line.runAction(lineAction)
-        print("down action")
     }
 }
