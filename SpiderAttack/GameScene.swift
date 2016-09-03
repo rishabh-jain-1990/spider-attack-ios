@@ -9,11 +9,12 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-
-    let background = SKSpriteNode(imageNamed: "BG")
-    let blackWeb = SKSpriteNode(imageNamed: "BlackWeb")
-    let grass = SKSpriteNode(imageNamed: "Grass")
-    let player = SKSpriteNode(imageNamed: "Bee")
+    
+    let backgroundMusic = SKAudioNode(fileNamed: "chew.mp3")
+    let background = SKSpriteNode(imageNamed: "bg")
+    let blackWeb = SKSpriteNode(imageNamed: "black_web")
+    let grass = SKSpriteNode(imageNamed: "grass")
+    let player = SKSpriteNode(imageNamed: "bee_00000")
     var spiderArray = [Spider]()
     
     var spiderWidth : CGFloat = 1
@@ -29,6 +30,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
+        
+        backgroundMusic.autoplayLooped = true
+//        addChild(backgroundMusic)
         
         spiderWidth = size.width / NUM_SPIDERS
         
@@ -72,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spiderArray[i].physicsBody?.categoryBitMask = PhysicsCategory.Spider // 3
             spiderArray[i].physicsBody?.contactTestBitMask = PhysicsCategory.Bee // 4
             spiderArray[i].physicsBody?.collisionBitMask = PhysicsCategory.None // 5
-            
+            spiderArray[i].hidden = true
             addChild(spiderArray[i])
             addChild(line)
             

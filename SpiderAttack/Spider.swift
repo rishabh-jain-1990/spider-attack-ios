@@ -12,16 +12,53 @@ import Dispatch
 
 class Spider : SKSpriteNode
 {
+    struct MovementDirection {
+        static let None      : UInt32 = 0
+        static let Down   : UInt32 = 0b1       // 1
+        static let Up: UInt32 = 0b10      // 2
+    }
+    
     let screenHeight :CGFloat
     let line :SKSpriteNode
+    private static var spiderImageArray = [SKTexture]()
+    var movementDrection = MovementDirection.Down
+    var currentImageIndex = 0;
     
     init(screenHeight: CGFloat, line: SKSpriteNode)
     {
         self.screenHeight = screenHeight
         self.line = line
         
-        let texture = SKTexture(imageNamed: "Spider")
+        let texture = SKTexture(imageNamed: "spider_00000")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        
+        if Spider.spiderImageArray.isEmpty
+        {
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00000"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00001"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00002"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00003"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00004"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00005"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00006"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00007"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00008"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00009"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00010"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00011"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00012"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00013"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00014"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00015"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00016"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00017"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00018"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00019"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00020"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00021"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00022"))
+            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00023"))
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,10 +72,12 @@ class Spider : SKSpriteNode
             downAction()
         }else{
             performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown))
+            performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
         }
     }
     
     func upAction() {
+        movementDrection = MovementDirection.Up
         let revY = screenHeight - CGFloat(arc4random_uniform(UInt32(screenHeight / 2 - size.height))) - size.height / 2;
         let duration = NSTimeInterval(revY / ((size.width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND))
         let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: revY), duration: duration);
@@ -50,11 +89,40 @@ class Spider : SKSpriteNode
     }
     
     func downAction() {
+        hidden = false
+        movementDrection = MovementDirection.Down
         let duration = NSTimeInterval(position.y / ((size.width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND))
         let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: size.height / 2), duration: duration);
+        SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock(changeImage), SKAction.waitForDuration(1)]))
         runAction(SKAction.sequence([actionRev, SKAction.runBlock(upAction)]))
         
         let lineAction = SKAction.resizeToHeight(screenHeight - size.height / 2, duration: duration)
         line.runAction(lineAction)
+    }
+    
+    func changeImage()
+    {
+//        switch movementDrection
+//        {
+//        case MovementDirection.Up, MovementDirection.Down:
+        texture = getNextImage()
+        performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
+//        }
+    }
+    
+    func getNextImage() -> SKTexture
+    {
+        currentImageIndex += 1
+        currentImageIndex = currentImageIndex > 23 ? 0 : currentImageIndex
+        
+        return Spider.spiderImageArray[currentImageIndex]
+    }
+    
+    func getPreviousImage() -> SKTexture
+    {
+        currentImageIndex -= 1
+        currentImageIndex = currentImageIndex < 0 ? 23 : currentImageIndex
+        
+        return Spider.spiderImageArray[currentImageIndex]
     }
 }
