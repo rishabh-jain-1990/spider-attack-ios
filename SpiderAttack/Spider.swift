@@ -13,17 +13,48 @@ class Spider : SKSpriteNode
 {
     let screenHeight :CGFloat
     let line :SKSpriteNode
+    var countdown = 0
+    var timer :NSTimer!
     
     init(screenHeight: CGFloat, line: SKSpriteNode)
     {
         self.screenHeight = screenHeight
         self.line = line
+        
         let texture = SKTexture(imageNamed: "Spider")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func startTimer(countdown: Int)
+    {
+        self.countdown = countdown
+        if countdown == 0
+        {
+            print("Countdown skipped")
+            downAction()
+        }else{
+            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target:self, selector: Selector(start()), userInfo: nil, repeats: false)
+        }
+    }
+    
+    func start()
+    {
+        countdown -= 1
+        if countdown <= 0
+        {
+            print("Countdown ended")
+            if timer != nil
+            {
+             timer.invalidate()
+            }
+            
+            print("timer invalidated")
+            downAction()
+        }
     }
     
     func upAction() {
@@ -44,5 +75,6 @@ class Spider : SKSpriteNode
         
         let lineAction = SKAction.resizeToHeight(screenHeight - size.height / 2, duration: duration)
         line.runAction(lineAction)
+        print("down action")
     }
 }

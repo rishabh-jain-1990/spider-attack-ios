@@ -9,40 +9,7 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    //    override func didMoveToView(view: SKView) {
-    //        /* Setup your scene here */
-    //        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-    //        myLabel.text = "Hello, World!"
-    //        myLabel.fontSize = 45
-    //        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
-    //
-    //        self.addChild(myLabel)
-    //    }
-    //
-    //    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-    //       /* Called when a touch begins */
-    //
-    //        for touch in touches {
-    //            let location = touch.locationInNode(self)
-    //
-    //            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-    //
-    //            sprite.xScale = 0.5
-    //            sprite.yScale = 0.5
-    //            sprite.position = location
-    //
-    //            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-    //
-    //            sprite.runAction(SKAction.repeatActionForever(action))
-    //
-    //            self.addChild(sprite)
-    //        }
-    //    }
-    //
-    //    override func update(currentTime: CFTimeInterval) {
-    //        /* Called before each frame is rendered */
-    //    }
-    
+
     let background = SKSpriteNode(imageNamed: "BG")
     let blackWeb = SKSpriteNode(imageNamed: "BlackWeb")
     let grass = SKSpriteNode(imageNamed: "Grass")
@@ -50,6 +17,7 @@ class GameScene: SKScene {
     var spiderArray = [Spider]()
     
     var spiderWidth : CGFloat = 1
+    var countdownValueList = [Int]()
     
     override func didMoveToView(view: SKView) {
         
@@ -71,7 +39,7 @@ class GameScene: SKScene {
         for i in 0..<Int(NUM_SPIDERS)
         {
             let x = (spiderWidth / 2) + (spiderWidth * CGFloat(i))
-        
+            
             let line = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(spiderWidth / 100, 0))
             line.anchorPoint = CGPointMake(0.5, 1)
             line.zPosition = 4
@@ -86,10 +54,8 @@ class GameScene: SKScene {
             addChild(spiderArray[i])
             addChild(line)
             
-            spiderArray[i].downAction()
+            spiderArray[i].startTimer(getCountdownValue())
         }
-        
-//        downAction()
         
         blackWeb.zPosition = 3
         blackWeb.position = CGPoint(x: size.width / 2, y: size.height / 2)
@@ -112,15 +78,22 @@ class GameScene: SKScene {
         self.addChild(myLabel)
     }
     
-//    func upAction() {
-//        let revY = size.height - CGFloat(arc4random_uniform(UInt32(size.height / 2 - spider.size.height))) - spider.size.height / 2;
-//        let actionRev = SKAction.moveTo(CGPoint(x: spider.position.x, y: revY), duration: NSTimeInterval(revY / ((spiderWidth / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND)));
-//        spider.runAction(SKAction.sequence([actionRev, SKAction.runBlock(downAction)]))
-//        player.position.x = player.position.x - (spiderWidth / BEE_SPEED_DIVIDER)
-//    }
-//    
-//    func downAction() {
-//        let actionRev = SKAction.moveTo(CGPoint(x: spider.position.x, y: spider.size.height / 2), duration: NSTimeInterval(spider.position.y / ((spiderWidth / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND)));
-//        spider.runAction(SKAction.sequence([actionRev, SKAction.runBlock(upAction)]))
-//    }
+    func getCountdownValue() -> Int
+    {
+        if (countdownValueList.isEmpty) {
+            for _ in 0..<Int(NUM_SPIDERS)
+            {
+                var num :Int
+                var occurences = 0
+                
+                repeat{
+                    num = Int(arc4random_uniform(10))
+                    occurences = countdownValueList.filter {$0 == num}.count
+                }while occurences > 2
+                countdownValueList.append(num)
+            }
+        }
+        
+        return countdownValueList.removeAtIndex(0);
+    }
 }
