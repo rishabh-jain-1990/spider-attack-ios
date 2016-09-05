@@ -6,10 +6,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="6or-pu-uSI">
             <objects>
-                <viewController id="LwR-wd-5fM" sceneMemberID="viewController">
+                <viewController id="LwR-wd-5fM" customClass="SplashViewController" customModule="SpiderAttack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Xj2-XU-BXK"/>
                         <viewControllerLayoutGuide type="bottom" id="aOF-Pm-ZtL"/>
@@ -43,21 +43,27 @@
                                     <constraint firstAttribute="width" constant="80" id="s7m-1s-1B8"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITw-9E-uK4">
+                                <rect key="frame" x="331" y="384" width="58" height="58"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                                <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                <state key="normal" image="help.png"/>
+                                <connections>
+                                    <segue destination="KFv-6h-oWf" kind="show" id="45g-Tm-cEC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjS-Pb-DMx">
                                 <rect key="frame" x="211" y="384" width="58" height="58"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="XJx-Hw-kHh"/>
                                     <constraint firstAttribute="width" constant="58" id="t9n-F1-QU8"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                 <state key="normal" image="play.png"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITw-9E-uK4">
-                                <rect key="frame" x="331" y="384" width="58" height="58"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
-                                <state key="normal" image="help.png"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="Z3t-1T-toS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,6 +102,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="helpButton" destination="ITw-9E-uK4" id="fgx-QJ-sse"/>
+                        <outlet property="playButton" destination="bjS-Pb-DMx" id="Toe-Ya-ag6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pku-2L-psg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,7 +178,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="455" y="399"/>
+            <point key="canvasLocation" x="503" y="63"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="Vgq-je-1NC">
+            <objects>
+                <viewController id="KFv-6h-oWf" customClass="HelpViewController" customModule="SpiderAttack" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bqJ-yd-vmP"/>
+                        <viewControllerLayoutGuide type="bottom" id="aSL-ja-yf2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LaZ-hY-2zx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="gbh-1o-Ngs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVW-9t-lM2">
+                                <rect key="frame" x="10" y="20" width="80" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="BACK">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPresses:" destination="KFv-6h-oWf" eventType="touchUpInside" id="Ajx-U0-hs2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gbh-1o-Ngs" firstAttribute="top" secondItem="LaZ-hY-2zx" secondAttribute="top" id="81C-QX-u5h"/>
+                            <constraint firstAttribute="trailing" secondItem="gbh-1o-Ngs" secondAttribute="trailing" id="B7M-Yi-No3"/>
+                            <constraint firstItem="aSL-ja-yf2" firstAttribute="top" secondItem="gbh-1o-Ngs" secondAttribute="bottom" id="Ji3-fV-cfr"/>
+                            <constraint firstItem="gbh-1o-Ngs" firstAttribute="leading" secondItem="LaZ-hY-2zx" secondAttribute="leading" id="iBR-4M-ojj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Q10-p6-Pnd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qP-Y3-QEL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="750"/>
         </scene>
     </scenes>
     <resources>
@@ -178,6 +228,7 @@
         <image name="black_web.png" width="1280" height="720"/>
         <image name="grass.png" width="1280" height="85"/>
         <image name="help.png" width="513" height="513"/>
+        <image name="help_screen.png" width="1280" height="720"/>
         <image name="play.png" width="513" height="513"/>
         <image name="spider_attack_logo.png" width="423" height="134"/>
     </resources>

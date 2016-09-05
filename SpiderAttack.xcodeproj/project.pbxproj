@@ -89,6 +89,8 @@
 		65BC762E1D7B345F0074D97C /* thread_bit.png in Resources */ = {isa = PBXBuildFile; fileRef = 65BC75E81D7B345F0074D97C /* thread_bit.png */; };
 		65BC762F1D7B345F0074D97C /* thread.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 65BC75E91D7B345F0074D97C /* thread.9.png */; };
 		65BC76301D7B345F0074D97C /* unmute_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 65BC75EA1D7B345F0074D97C /* unmute_icon.png */; };
+		65BC76351D7D94DE0074D97C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76341D7D94DE0074D97C /* SplashViewController.swift */; };
+		65BC76371D7D9CE10074D97C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76361D7D9CE10074D97C /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +190,8 @@
 		65BC75E81D7B345F0074D97C /* thread_bit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thread_bit.png; path = "../../../../workspace/RunJohny/app/src/main/res/drawable-xhdpi/thread_bit.png"; sourceTree = "<group>"; };
 		65BC75E91D7B345F0074D97C /* thread.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thread.9.png; path = "../../../../workspace/RunJohny/app/src/main/res/drawable-xhdpi/thread.9.png"; sourceTree = "<group>"; };
 		65BC75EA1D7B345F0074D97C /* unmute_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unmute_icon.png; path = "../../../../workspace/RunJohny/app/src/main/res/drawable-xhdpi/unmute_icon.png"; sourceTree = "<group>"; };
+		65BC76341D7D94DE0074D97C /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		65BC76361D7D9CE10074D97C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +244,8 @@
 				65BC75801D702E290074D97C /* LaunchScreen.storyboard */,
 				65BC75831D702E290074D97C /* Info.plist */,
 				65BC75991D776E770074D97C /* Constants.swift */,
+				65BC76341D7D94DE0074D97C /* SplashViewController.swift */,
+				65BC76361D7D9CE10074D97C /* HelpViewController.swift */,
 			);
 			path = SpiderAttack;
 			sourceTree = "<group>";
@@ -524,8 +530,10 @@
 				65BC759D1D78492E0074D97C /* Spider.swift in Sources */,
 				65BC75781D702E290074D97C /* GameScene.swift in Sources */,
 				65BC757A1D702E290074D97C /* GameViewController.swift in Sources */,
+				65BC76371D7D9CE10074D97C /* HelpViewController.swift in Sources */,
 				65BC75741D702E290074D97C /* AppDelegate.swift in Sources */,
 				65BC759F1D7849660074D97C /* Bee.swift in Sources */,
+				65BC76351D7D94DE0074D97C /* SplashViewController.swift in Sources */,
 				65BC759A1D776E770074D97C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
