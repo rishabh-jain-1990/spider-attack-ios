@@ -10,6 +10,9 @@ import UIKit
 import SpriteKit
 
 class GameViewController: UIViewController {
+    
+    
+    @IBOutlet weak var gameView: SKView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +20,7 @@ class GameViewController: UIViewController {
         let scene = GameScene(size: view.bounds.size)
         
             // Configure the view.
-            let skView = self.view as! SKView
+            let skView = gameView as SKView
         
             skView.showsFPS = true
         
@@ -27,7 +30,7 @@ class GameViewController: UIViewController {
             skView.ignoresSiblingOrder = true
             
             /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .ResizeFill
+            //scene.scaleMode =
         
             skView.presentScene(scene)
         
