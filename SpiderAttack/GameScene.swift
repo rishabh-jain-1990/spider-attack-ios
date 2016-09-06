@@ -14,7 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let background = SKSpriteNode(imageNamed: "bg")
     let blackWeb = SKSpriteNode(imageNamed: "black_web")
     let grass = SKSpriteNode(imageNamed: "grass")
-    let player = SKSpriteNode(imageNamed: "bee_00000")
+    var player : Bee!
     var spiderArray = [Spider]()
     
     var spiderWidth : CGFloat = 1
@@ -32,7 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         backgroundMusic.autoplayLooped = true
-//        addChild(backgroundMusic)
+        //        addChild(backgroundMusic)
         
         spiderWidth = size.width / NUM_SPIDERS
         
@@ -41,6 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.position = CGPoint(x: (size.width / 2), y: (size.height / 2))
         addChild(background)
         
+        player = Bee(leftX: 0, rightX: size.width, spiderWidth: spiderWidth)
         player.zPosition = 2
         var aspectRatio = player.size.width / player.size.height
         var width = spiderWidth / BEE_SIZE_DIVIDER
@@ -127,8 +128,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
         print("Hit")
-//        projectile.removeFromParent()
-//        monster.removeFromParent()
+        //        projectile.removeFromParent()
+        //        monster.removeFromParent()
     }
     
     func getCountdownValue() -> Int
@@ -148,5 +149,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         return countdownValueList.removeAtIndex(0);
+    }
+    
+    func moveBeeRight() {
+        if(player != nil)
+        {
+            player.moveRight()
+        }
+    }
+    
+    func stopMovingBeeRight() {
+        if(player != nil)
+        {
+            player.stopMovingRight()
+        }
+    }
+    
+    func moveBeeLeft() {
+        if(player != nil)
+        {
+            player.moveLeft()
+        }
+    }
+    
+    func stopMovingBeeLeft() {
+        if(player != nil)
+        {
+            player.stopMovingLeft()
+        }
     }
 }

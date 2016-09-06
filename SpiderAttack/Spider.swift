@@ -12,16 +12,10 @@ import Dispatch
 
 class Spider : SKSpriteNode
 {
-    struct MovementDirection {
-        static let None      : UInt32 = 0
-        static let Down   : UInt32 = 0b1       // 1
-        static let Up: UInt32 = 0b10      // 2
-    }
     
     let screenHeight :CGFloat
     let line :SKSpriteNode
     private static var spiderImageArray = [SKTexture]()
-    var movementDrection = MovementDirection.Down
     var currentImageIndex = 0;
     
     init(screenHeight: CGFloat, line: SKSpriteNode)
@@ -77,7 +71,6 @@ class Spider : SKSpriteNode
     }
     
     func upAction() {
-        movementDrection = MovementDirection.Up
         let revY = screenHeight - CGFloat(arc4random_uniform(UInt32(screenHeight / 2 - size.height))) - size.height / 2;
         let duration = NSTimeInterval(revY / ((size.width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND))
         let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: revY), duration: duration);
@@ -90,7 +83,6 @@ class Spider : SKSpriteNode
     
     func downAction() {
         hidden = false
-        movementDrection = MovementDirection.Down
         let duration = NSTimeInterval(position.y / ((size.width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND))
         let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: size.height / 2), duration: duration);
         SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock(changeImage), SKAction.waitForDuration(1)]))
@@ -102,12 +94,12 @@ class Spider : SKSpriteNode
     
     func changeImage()
     {
-//        switch movementDrection
-//        {
-//        case MovementDirection.Up, MovementDirection.Down:
+        //        switch movementDrection
+        //        {
+        //        case MovementDirection.Up, MovementDirection.Down:
         texture = getNextImage()
         performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
-//        }
+        //        }
     }
     
     func getNextImage() -> SKTexture
