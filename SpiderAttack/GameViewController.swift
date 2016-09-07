@@ -32,6 +32,7 @@ class GameViewController: UIViewController {
     
     
     var scene : GameScene!
+    var isGamePaused = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,7 @@ class GameViewController: UIViewController {
         rateImageButton.layer.cornerRadius = 0.5 * rateImageButton.bounds.size.width
         muteImageButton.layer.cornerRadius = 0.5 * muteImageButton.bounds.size.width
         
-//        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers.ttf", size: 20)
+//        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
 
     }
     
@@ -118,6 +119,32 @@ class GameViewController: UIViewController {
         if(scene != nil)
         {
             scene.stopMovingBeeLeft()
+        }
+    }
+    
+    func pauseGame()
+    {
+        isGamePaused = true
+        
+        if(scene != nil)
+        {
+            scene.pause()
+            scoreboardView.hidden = false
+            playButton.setImage(UIImage(named: "play"), forState: UIControlState.Normal)
+        }
+    }
+    
+    @IBAction func pauseGame(sender: UITapGestureRecognizer) {
+        pauseGame()
+    }
+    
+    @IBAction func playButtonPressed(sender: AnyObject) {
+        isGamePaused = true
+        
+        if(scene != nil)
+        {
+            scene.unpause()
+            scoreboardView.hidden = true
         }
     }
 }

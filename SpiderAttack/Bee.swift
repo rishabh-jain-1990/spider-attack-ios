@@ -105,6 +105,11 @@ class Bee : SKSpriteNode
     
     func changeImage()
     {
+        if paused == true
+        {
+            return
+        }
+        
         switch movementDirection
         {
         case MovementDirection.Right:
@@ -132,5 +137,14 @@ class Bee : SKSpriteNode
         currentImageIndex = currentImageIndex < 0 ? 23 : currentImageIndex
         
         return Bee.beeImageArray[currentImageIndex]
+    }
+    
+    func pause() {
+        paused = true
+    }
+    
+    func unpause() {
+        paused = false
+        changeImage()
     }
 }

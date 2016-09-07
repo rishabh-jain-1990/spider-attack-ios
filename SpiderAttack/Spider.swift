@@ -17,6 +17,7 @@ class Spider : SKSpriteNode
     let line :SKSpriteNode
     private static var spiderImageArray = [SKTexture]()
     var currentImageIndex = 0;
+    var countdown = 0
     
     init(screenHeight: CGFloat, line: SKSpriteNode)
     {
@@ -61,6 +62,7 @@ class Spider : SKSpriteNode
     
     func startTimer(countdown: Int)
     {
+        self.countdown = countdown
         if countdown == 0
         {
             downAction()
@@ -82,6 +84,11 @@ class Spider : SKSpriteNode
     }
     
     func downAction() {
+        if(paused == true)
+        {
+            return
+        }
+        
         hidden = false
         let duration = NSTimeInterval(position.y / ((size.width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND))
         let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: size.height / 2), duration: duration);
@@ -94,6 +101,10 @@ class Spider : SKSpriteNode
     
     func changeImage()
     {
+        if paused == true
+        {
+            return
+        }
         //        switch movementDrection
         //        {
         //        case MovementDirection.Up, MovementDirection.Down:
@@ -116,5 +127,32 @@ class Spider : SKSpriteNode
         currentImageIndex = currentImageIndex < 0 ? 23 : currentImageIndex
         
         return Spider.spiderImageArray[currentImageIndex]
+    }
+    
+    func pause() {
+        paused = true
+        line.paused = true
+    }
+    
+    func unpause() {
+        paused = false
+        line.paused = false
+        
+        if hidden == true
+        {
+            if countdown > 4
+            {
+                performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown - 2))
+            }
+            else if countdown > 1
+            {
+                performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown - 1))
+            }else
+            {
+                performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown))
+            }
+        }
+        
+        changeImage()
     }
 }
