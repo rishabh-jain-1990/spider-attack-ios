@@ -91,6 +91,7 @@
 		65BC76301D7B345F0074D97C /* unmute_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 65BC75EA1D7B345F0074D97C /* unmute_icon.png */; };
 		65BC76351D7D94DE0074D97C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76341D7D94DE0074D97C /* SplashViewController.swift */; };
 		65BC76371D7D9CE10074D97C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76361D7D9CE10074D97C /* HelpViewController.swift */; };
+		65BC76391D8034390074D97C /* creepycrawlers.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BC76381D8034390074D97C /* creepycrawlers.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,7 @@
 		65BC75EA1D7B345F0074D97C /* unmute_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unmute_icon.png; path = "../../../../workspace/RunJohny/app/src/main/res/drawable-xhdpi/unmute_icon.png"; sourceTree = "<group>"; };
 		65BC76341D7D94DE0074D97C /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		65BC76361D7D9CE10074D97C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		65BC76381D8034390074D97C /* creepycrawlers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = creepycrawlers.ttf; path = ../../../../workspace/RunJohny/app/src/main/assets/creepycrawlers.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 		65BC75721D702E290074D97C /* SpiderAttack */ = {
 			isa = PBXGroup;
 			children = (
+				65BC763A1D8034430074D97C /* Fonts */,
 				65BC76311D7B34670074D97C /* Images */,
 				65BC75A41D7B1CCD0074D97C /* Supporting Files */,
 				65BC759B1D7848F40074D97C /* Model */,
@@ -354,6 +357,14 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		65BC763A1D8034430074D97C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				65BC76381D8034390074D97C /* creepycrawlers.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,6 +471,7 @@
 				65BC76091D7B345F0074D97C /* grass.png in Resources */,
 				65BC760F1D7B345F0074D97C /* player.png in Resources */,
 				65BC75F81D7B345F0074D97C /* bee_00011.png in Resources */,
+				65BC76391D8034390074D97C /* creepycrawlers.ttf in Resources */,
 				65BC761C1D7B345F0074D97C /* spider_00009.png in Resources */,
 				65BC76171D7B345F0074D97C /* spider_00004.png in Resources */,
 				65BC75F31D7B345F0074D97C /* bee_00006.png in Resources */,

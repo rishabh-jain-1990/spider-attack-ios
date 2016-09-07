@@ -16,6 +16,21 @@ class GameViewController: UIViewController {
     @IBOutlet weak var rightArrow: UIButton!
     @IBOutlet weak var leftArrow: UIButton!
     
+    @IBOutlet weak var scoreboardView: UIView!
+    @IBOutlet weak var currentScoreLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var signInImageButton: UIButton!
+    @IBOutlet weak var leaderboardImageButton: UIButton!
+    @IBOutlet weak var rateImageButton: UIButton!
+    @IBOutlet weak var shareImageButton: UIButton!
+    @IBOutlet weak var shareTextButton: UIButton!
+    @IBOutlet weak var rateTextButton: UIButton!
+    @IBOutlet weak var signInTextButton: UIButton!
+    @IBOutlet weak var leaderboardTextButton: UIButton!
+    @IBOutlet weak var muteImageButton: UIButton!
+    
+    
     var scene : GameScene!
     
     override func viewDidLoad() {
@@ -45,6 +60,16 @@ class GameViewController: UIViewController {
         leftArrow.addTarget(self, action: #selector(moveLeft), forControlEvents: .TouchDown)
         
         leftArrow.addTarget(self, action: #selector(stopMovingLeft), forControlEvents: [.TouchUpOutside, .TouchUpInside])
+        
+        playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
+        signInImageButton.layer.cornerRadius = 0.5 * signInImageButton.bounds.size.width
+        leaderboardImageButton.layer.cornerRadius = 0.5 * leaderboardImageButton.bounds.size.width
+        shareImageButton.layer.cornerRadius = 0.5 * shareImageButton.bounds.size.width
+        rateImageButton.layer.cornerRadius = 0.5 * rateImageButton.bounds.size.width
+        muteImageButton.layer.cornerRadius = 0.5 * muteImageButton.bounds.size.width
+        
+//        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers.ttf", size: 20)
+
     }
     
     override func shouldAutorotate() -> Bool {

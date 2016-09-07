@@ -96,13 +96,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         grass.size = CGSize(width: width, height: 40)
         addChild(grass)
         
-        let myLabel = SKLabelNode(fontNamed: "Arial")
-        myLabel.zPosition = 4
-        myLabel.text = someNotification
-        myLabel.fontSize = 20
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        
-        self.addChild(myLabel)
+//        let myLabel = SKLabelNode(fontNamed: "Arial")
+//        myLabel.zPosition = 4
+//        myLabel.text = someNotification
+//        myLabel.fontSize = 20
+//        myLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+//        
+//        self.addChild(myLabel)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
