@@ -9,12 +9,19 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GameResult {
     
+    struct GameState {
+        static let Resumed      : UInt32 = 0
+        static let Over   : UInt32 = 0b1       // 1
+        static let Paused: UInt32 = 0b10      // 2
+        static let NotStarted: UInt32 = 0b100      // 3
+    }
     
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var rightArrow: UIButton!
     @IBOutlet weak var leftArrow: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet weak var scoreboardView: UIView!
     @IBOutlet weak var currentScoreLabel: UILabel!
@@ -32,12 +39,14 @@ class GameViewController: UIViewController {
     
     
     var scene : GameScene!
-    var isGamePaused = false
+    var gameState = GameState.NotStarted
+    var scoreTimer : NSTimer!
+    var timeElapsed = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scene = GameScene(size: view.bounds.size)
+        scene = GameScene(size: view.bounds.size, gameResultDelegate: self)
         
         // Configure the view.
         let skView = gameView as SKView
@@ -69,8 +78,8 @@ class GameViewController: UIViewController {
         rateImageButton.layer.cornerRadius = 0.5 * rateImageButton.bounds.size.width
         muteImageButton.layer.cornerRadius = 0.5 * muteImageButton.bounds.size.width
         
-//        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
-
+        //        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
+        scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
     }
     
     override func shouldAutorotate() -> Bool {
@@ -92,6 +101,12 @@ class GameViewController: UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    func updateScore()
+    {
+        timeElapsed += 1
+        scoreLabel.text = String(format: "Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
     }
     
     func moveRight() {
@@ -124,14 +139,33 @@ class GameViewController: UIViewController {
     
     func pauseGame()
     {
-        isGamePaused = true
+        gameState = GameState.Paused
         
         if(scene != nil)
         {
             scene.pause()
             scoreboardView.hidden = false
+            currentScoreLabel.text = "Game Paused"
+            currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
             playButton.setImage(UIImage(named: "play"), forState: UIControlState.Normal)
         }
+        
+        scoreTimer.invalidate()
+    }
+    
+    func gameOver()
+    {
+        gameState = GameState.Over
+        if(scene != nil)
+        {
+            scene.pause()
+            scoreboardView.hidden = false
+            currentScoreLabel.text = "Game Over"
+            currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
+            playButton.setImage(UIImage(named: "replay"), forState: UIControlState.Normal)
+        }
+        
+        scoreTimer.invalidate()
     }
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
@@ -139,12 +173,45 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func playButtonPressed(sender: AnyObject) {
-        isGamePaused = true
-        
-        if(scene != nil)
+        switch gameState
         {
-            scene.unpause()
-            scoreboardView.hidden = true
+        case GameState.NotStarted:
+            gameState = GameState.Resumed
+            
+            if(scene != nil)
+            {
+                scene.unpause()
+                scoreboardView.hidden = true
+            }
+            
+            scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+        case GameState.Paused:
+            // TODO: Start countdown
+            gameState = GameState.Resumed
+            
+            if(scene != nil)
+            {
+                scene.unpause()
+                scoreboardView.hidden = true
+            }
+            
+            scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+        case GameState.Over:
+            gameState = GameState.Resumed
+            
+            if(scene != nil)
+            {
+                scene.reset()
+                scoreboardView.hidden = true
+            }
+            
+            timeElapsed = 0
+            scoreLabel.text = String(format: "Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
+            scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+        case GameState.Resumed:
+            break
+        default:
+            break
         }
     }
 }

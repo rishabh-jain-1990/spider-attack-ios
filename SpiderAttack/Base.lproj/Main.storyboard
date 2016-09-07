@@ -136,7 +136,7 @@
                                 <inset key="imageEdgeInsets" minX="25" minY="5" maxX="25" maxY="5"/>
                                 <state key="normal" image="arrow_right.png"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmt-oI-nfG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score-  00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmt-oI-nfG">
                                 <rect key="frame" x="120" y="540" width="360" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -346,6 +346,7 @@
                         <outlet property="rateImageButton" destination="oKV-gE-ntR" id="D1j-SG-wO1"/>
                         <outlet property="rateTextButton" destination="E1L-Cl-VJY" id="Lic-EN-1AA"/>
                         <outlet property="rightArrow" destination="hh2-o2-IAH" id="pZp-js-h4o"/>
+                        <outlet property="scoreLabel" destination="Rmt-oI-nfG" id="44q-jw-KNf"/>
                         <outlet property="scoreboardView" destination="pgz-G8-a3K" id="HlE-qt-HCT"/>
                         <outlet property="shareImageButton" destination="FvO-H5-tG4" id="NTL-lR-cLa"/>
                         <outlet property="shareTextButton" destination="xuT-8G-Jao" id="nr3-AB-gM8"/>

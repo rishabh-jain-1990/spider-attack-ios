@@ -92,6 +92,7 @@
 		65BC76351D7D94DE0074D97C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76341D7D94DE0074D97C /* SplashViewController.swift */; };
 		65BC76371D7D9CE10074D97C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76361D7D9CE10074D97C /* HelpViewController.swift */; };
 		65BC76391D8034390074D97C /* creepycrawlers.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BC76381D8034390074D97C /* creepycrawlers.ttf */; };
+		65BC763C1D8089330074D97C /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC763B1D8089330074D97C /* GameResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,7 @@
 		65BC76341D7D94DE0074D97C /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		65BC76361D7D9CE10074D97C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		65BC76381D8034390074D97C /* creepycrawlers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = creepycrawlers.ttf; path = ../../../../workspace/RunJohny/app/src/main/assets/creepycrawlers.ttf; sourceTree = "<group>"; };
+		65BC763B1D8089330074D97C /* GameResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				65BC75731D702E290074D97C /* AppDelegate.swift */,
 				65BC75771D702E290074D97C /* GameScene.swift */,
 				65BC75791D702E290074D97C /* GameViewController.swift */,
+				65BC763B1D8089330074D97C /* GameResult.swift */,
 				65BC757B1D702E290074D97C /* Main.storyboard */,
 				65BC757E1D702E290074D97C /* Assets.xcassets */,
 				65BC75801D702E290074D97C /* LaunchScreen.storyboard */,
@@ -547,6 +550,7 @@
 				65BC759F1D7849660074D97C /* Bee.swift in Sources */,
 				65BC76351D7D94DE0074D97C /* SplashViewController.swift in Sources */,
 				65BC759A1D776E770074D97C /* Constants.swift in Sources */,
+				65BC763C1D8089330074D97C /* GameResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
