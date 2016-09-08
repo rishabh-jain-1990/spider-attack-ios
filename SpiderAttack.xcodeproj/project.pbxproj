@@ -17,13 +17,12 @@
 		65BC759A1D776E770074D97C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC75991D776E770074D97C /* Constants.swift */; };
 		65BC759D1D78492E0074D97C /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC759C1D78492E0074D97C /* Spider.swift */; };
 		65BC759F1D7849660074D97C /* Bee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC759E1D7849660074D97C /* Bee.swift */; };
-		65BC75A21D7B1CB90074D97C /* chew.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 65BC75A01D7B1CB90074D97C /* chew.mp3 */; };
-		65BC75A31D7B1CB90074D97C /* sound_bg_short.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 65BC75A11D7B1CB90074D97C /* sound_bg_short.mp3 */; };
 		65BC76351D7D94DE0074D97C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76341D7D94DE0074D97C /* SplashViewController.swift */; };
 		65BC76371D7D9CE10074D97C /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC76361D7D9CE10074D97C /* HelpViewController.swift */; };
-		65BC76391D8034390074D97C /* creepycrawlers.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65BC76381D8034390074D97C /* creepycrawlers.ttf */; };
 		65BC763C1D8089330074D97C /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BC763B1D8089330074D97C /* GameResult.swift */; };
 		65BC763F1D81688D0074D97C /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 65BC763E1D81688D0074D97C /* Images */; };
+		65BC76421D8169360074D97C /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 65BC76411D8169360074D97C /* Fonts */; };
+		65BC76441D81696E0074D97C /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 65BC76431D81696E0074D97C /* Sounds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,13 +50,12 @@
 		65BC75991D776E770074D97C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65BC759C1D78492E0074D97C /* Spider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
 		65BC759E1D7849660074D97C /* Bee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bee.swift; sourceTree = "<group>"; };
-		65BC75A01D7B1CB90074D97C /* chew.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = chew.mp3; path = ../../../../workspace/RunJohny/app/src/main/res/raw/chew.mp3; sourceTree = "<group>"; };
-		65BC75A11D7B1CB90074D97C /* sound_bg_short.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = sound_bg_short.mp3; path = ../../../../workspace/RunJohny/app/src/main/res/raw/sound_bg_short.mp3; sourceTree = "<group>"; };
 		65BC76341D7D94DE0074D97C /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		65BC76361D7D9CE10074D97C /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
-		65BC76381D8034390074D97C /* creepycrawlers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = creepycrawlers.ttf; path = ../../../../workspace/RunJohny/app/src/main/assets/creepycrawlers.ttf; sourceTree = "<group>"; };
 		65BC763B1D8089330074D97C /* GameResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 		65BC763E1D81688D0074D97C /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		65BC76411D8169360074D97C /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		65BC76431D81696E0074D97C /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				65BC763D1D8168810074D97C /* Support Files */,
-				65BC763A1D8034430074D97C /* Fonts */,
-				65BC75A41D7B1CCD0074D97C /* Supporting Files */,
 				65BC759B1D7848F40074D97C /* Model */,
 				65BC75731D702E290074D97C /* AppDelegate.swift */,
 				65BC75771D702E290074D97C /* GameScene.swift */,
@@ -136,26 +132,11 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		65BC75A41D7B1CCD0074D97C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				65BC75A01D7B1CB90074D97C /* chew.mp3 */,
-				65BC75A11D7B1CB90074D97C /* sound_bg_short.mp3 */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		65BC763A1D8034430074D97C /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				65BC76381D8034390074D97C /* creepycrawlers.ttf */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
 		65BC763D1D8168810074D97C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				65BC76431D81696E0074D97C /* Sounds */,
+				65BC76411D8169360074D97C /* Fonts */,
 				65BC763E1D81688D0074D97C /* Images */,
 			);
 			name = "Support Files";
@@ -242,13 +223,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65BC76391D8034390074D97C /* creepycrawlers.ttf in Resources */,
 				65BC75821D702E290074D97C /* LaunchScreen.storyboard in Resources */,
 				65BC763F1D81688D0074D97C /* Images in Resources */,
-				65BC75A21D7B1CB90074D97C /* chew.mp3 in Resources */,
+				65BC76441D81696E0074D97C /* Sounds in Resources */,
 				65BC757F1D702E290074D97C /* Assets.xcassets in Resources */,
-				65BC75A31D7B1CB90074D97C /* sound_bg_short.mp3 in Resources */,
 				65BC757D1D702E290074D97C /* Main.storyboard in Resources */,
+				65BC76421D8169360074D97C /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
