@@ -5,6 +5,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="creepycrawlers.ttf">
+            <string>CreepyCrawlers</string>
+            <string>CreepyCrawlers</string>
+            <string>CreepyCrawlers</string>
+            <string>CreepyCrawlers</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Splash View Controller-->
         <scene sceneID="6or-pu-uSI">
@@ -219,26 +227,30 @@
                                                 <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                                 <state key="normal" image="share.png"/>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuT-8G-Jao">
-                                                <rect key="frame" x="23" y="173" width="45" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xuT-8G-Jao">
+                                                <rect key="frame" x="23" y="173" width="45" height="26"/>
+                                                <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="13"/>
                                                 <state key="normal" title="Share">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1L-Cl-VJY">
-                                                <rect key="frame" x="77" y="173" width="45" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1L-Cl-VJY">
+                                                <rect key="frame" x="77" y="173" width="45" height="26"/>
+                                                <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="13"/>
                                                 <state key="normal" title="Rate">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9L-VU-x4o">
-                                                <rect key="frame" x="203" y="173" width="45" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9L-VU-x4o">
+                                                <rect key="frame" x="203" y="173" width="45" height="26"/>
+                                                <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="13"/>
                                                 <state key="normal" title="Sign In">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-ay-wUJ">
-                                                <rect key="frame" x="258" y="173" width="45" height="30"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-ay-wUJ">
+                                                <rect key="frame" x="258" y="173" width="45" height="26"/>
+                                                <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="13"/>
                                                 <state key="normal" title="Leaderboard">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>

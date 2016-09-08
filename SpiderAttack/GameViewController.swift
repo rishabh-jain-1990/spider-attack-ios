@@ -147,7 +147,7 @@ class GameViewController: UIViewController, GameResult {
             scoreboardView.hidden = false
             currentScoreLabel.text = "Game Paused"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
-            playButton.setImage(UIImage(named: "play"), forState: UIControlState.Normal)
+            playButton.setImage(UIImage(named: "play.png"), forState: UIControlState.Normal)
         }
         
         scoreTimer.invalidate()
@@ -162,7 +162,7 @@ class GameViewController: UIViewController, GameResult {
             scoreboardView.hidden = false
             currentScoreLabel.text = "Game Over"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
-            playButton.setImage(UIImage(named: "replay"), forState: UIControlState.Normal)
+            playButton.setImage(UIImage(named: "replay.png"), forState: UIControlState.Normal)
         }
         
         scoreTimer.invalidate()

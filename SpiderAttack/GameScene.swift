@@ -10,10 +10,10 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    let backgroundMusic = SKAudioNode(fileNamed: "chew.mp3")
-    let background = SKSpriteNode(imageNamed: "bg")
-    let blackWeb = SKSpriteNode(imageNamed: "black_web")
-    let grass = SKSpriteNode(imageNamed: "grass")
+    let backgroundMusic = SKAudioNode(fileNamed: "sound_bg_short.mp3")
+    let background = SKSpriteNode(imageNamed: "bg.png")
+    let blackWeb = SKSpriteNode(imageNamed: "black_web.png")
+    let grass = SKSpriteNode(imageNamed: "grass.png")
     var player : Bee!
     var spiderArray = [Spider]()
     
@@ -43,7 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         backgroundMusic.autoplayLooped = true
-        //        addChild(backgroundMusic)
+//                addChild(backgroundMusic)
         
         spiderWidth = size.width / NUM_SPIDERS
         
