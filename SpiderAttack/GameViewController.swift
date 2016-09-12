@@ -9,8 +9,9 @@
 import UIKit
 import SpriteKit
 import AVFoundation
+import Mixpanel
 
-class GameViewController: UIViewController, GameResult {
+class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSignInUIDelegate {
     
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var rightArrow: UIButton!
@@ -44,6 +45,10 @@ class GameViewController: UIViewController, GameResult {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Mixpanel.initialize(token: MIXPANEL_TOKEN)
+        
+         GPGManager.sharedInstance().statusDelegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound_bg_short", ofType: "mp3")!)
         var playerItem = AVPlayerItem( URL:alertSound )
@@ -79,6 +84,9 @@ class GameViewController: UIViewController, GameResult {
         
         leftArrow.addTarget(self, action: #selector(stopMovingLeft), forControlEvents: [.TouchUpOutside, .TouchUpInside])
         
+        signInImageButton.addTarget(self, action: #selector(signInClicked), forControlEvents: .TouchDown)
+        signInTextButton.addTarget(self, action: #selector(signInClicked), forControlEvents: .TouchDown)
+        
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         signInImageButton.layer.cornerRadius = 0.5 * signInImageButton.bounds.size.width
         leaderboardImageButton.layer.cornerRadius = 0.5 * leaderboardImageButton.bounds.size.width
@@ -87,6 +95,7 @@ class GameViewController: UIViewController, GameResult {
         muteImageButton.layer.cornerRadius = 0.5 * muteImageButton.bounds.size.width
         
         muteImageButton.setImage(UIImage(named: defaults.boolForKey(IS_MUTE_KEY) ? "mute_icon.png" : "unmute_icon.png"), forState: UIControlState.Normal)
+        updateSignInButton()
         
         //        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
         scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
@@ -203,6 +212,8 @@ class GameViewController: UIViewController, GameResult {
             playButton.setImage(UIImage(named: "replay.png"), forState: UIControlState.Normal)
         }
         
+        Mixpanel.mainInstance().track(event: "Score",
+                                      properties: ["Current Score" : timeElapsed])
         scoreTimer.invalidate()
     }
     
@@ -222,6 +233,37 @@ class GameViewController: UIViewController, GameResult {
         bgSoundPlayer.seekToTime(kCMTimeZero)
         bgSoundPlayer.play()
     }
+    
+    func signInClicked()
+    {
+        if !GPGManager.sharedInstance().signedIn
+        {
+            GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: true);
+        }
+        else
+        {
+            GPGManager.sharedInstance().signOut()
+            updateSignInButton()
+        }
+    }
+    
+    func updateSignInButton() {
+        signInImageButton.setImage(UIImage(named: GPGManager.sharedInstance().signedIn ? "controller_filled.png" : "controller.png"), forState: UIControlState.Normal)
+        signInTextButton.setTitle(GPGManager.sharedInstance().signedIn ? "Sign Out" : "Sign In", forState: UIControlState.Normal)
+    }
+    
+    func didFinishGamesSignInWithError(error: NSError!) {
+        updateSignInButton();
+    }
+    
+    func didFinishGamesSignOutWithError(error: NSError!) {
+        updateSignInButton();
+    }
+    
+    func didFinishGoogleAuthWithError(error: NSError!) {
+        updateSignInButton();
+    }
+
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
         pauseGame()
