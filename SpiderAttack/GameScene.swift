@@ -9,8 +9,6 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
-    let backgroundMusic = SKAudioNode(fileNamed: "sound_bg_short.mp3")
     let background = SKSpriteNode(imageNamed: "bg.png")
     let blackWeb = SKSpriteNode(imageNamed: "black_web.png")
     let grass = SKSpriteNode(imageNamed: "grass.png")
@@ -20,6 +18,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var spiderWidth : CGFloat = 1
     var countdownValueList = [Int]()
     let gameResultDelegate :GameResult!
+    
+    var gameState = GameState.NotStarted
     
     struct PhysicsCategory {
         static let None      : UInt32 = 0
@@ -39,11 +39,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
+        
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
-        
-        backgroundMusic.autoplayLooped = true
-//                addChild(backgroundMusic)
         
         spiderWidth = size.width / NUM_SPIDERS
         
@@ -91,16 +89,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if ((firstBody.categoryBitMask & PhysicsCategory.Spider != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Bee != 0)) {
             // projectileDidCollideWithMonster(firstBody.node as! SKSpriteNode, monster: secondBody.node as! SKSpriteNode)
-            gameResultDelegate.gameOver()
+            
+            if gameState != GameState.Over
+            {
+                gameState = GameState.Over
+                
+                //                removeActionForKey(BG_SOUND_KEY)
+                
+                gameResultDelegate.gameOver()
+            }
         }
         
     }
     
-    func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
-        print("Hit")
-        //        projectile.removeFromParent()
-        //        monster.removeFromParent()
-    }
+    //    func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
+    //        print("Hit")
+    //        //        projectile.removeFromParent()
+    //        //        monster.removeFromParent()
+    //    }
     
     func getCountdownValue() -> Int
     {
@@ -156,6 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         player.pause()
+        gameState = GameState.Paused
     }
     
     func unpause() {
@@ -165,10 +172,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         player.unpause()
+        gameState = GameState.Resumed
     }
     
     func reset()
     {
+        gameState = GameState.Resumed
         if player == nil
         {
             player = Bee(leftX: 0, rightX: size.width, spiderWidth: spiderWidth)
@@ -185,6 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(player)
         }
         
+        player.unpause()
         player.position = CGPoint(x: size.width / 2, y: player.size.height / 2 + 4)
         
         for _ in 0..<spiderArray.count
@@ -220,6 +230,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             spiderArray[i].startTimer(getCountdownValue())
         }
-        
     }
 }

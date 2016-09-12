@@ -8,15 +8,9 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 class GameViewController: UIViewController, GameResult {
-    
-    struct GameState {
-        static let Resumed      : UInt32 = 0
-        static let Over   : UInt32 = 0b1       // 1
-        static let Paused: UInt32 = 0b10      // 2
-        static let NotStarted: UInt32 = 0b100      // 3
-    }
     
     @IBOutlet weak var gameView: SKView!
     @IBOutlet weak var rightArrow: UIButton!
@@ -24,6 +18,7 @@ class GameViewController: UIViewController, GameResult {
     @IBOutlet weak var scoreLabel: UILabel!
     
     @IBOutlet weak var scoreboardView: UIView!
+    @IBOutlet weak var gameOverLabel: UILabel!
     @IBOutlet weak var currentScoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
@@ -37,14 +32,27 @@ class GameViewController: UIViewController, GameResult {
     @IBOutlet weak var leaderboardTextButton: UIButton!
     @IBOutlet weak var muteImageButton: UIButton!
     
-    
     var scene : GameScene!
     var gameState = GameState.NotStarted
     var scoreTimer : NSTimer!
     var timeElapsed = 0
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    var bgSoundPlayer = AVPlayer()
+    var gameOverSoundPlayer = AVPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound_bg_short", ofType: "mp3")!)
+        var playerItem = AVPlayerItem( URL:alertSound )
+        bgSoundPlayer = AVPlayer(playerItem:playerItem)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playBackgroundSound), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
+        
+        alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("chew", ofType: "mp3")!)
+        playerItem = AVPlayerItem( URL:alertSound )
+        gameOverSoundPlayer = AVPlayer(playerItem:playerItem)
         
         scene = GameScene(size: view.bounds.size, gameResultDelegate: self)
         
@@ -77,6 +85,8 @@ class GameViewController: UIViewController, GameResult {
         shareImageButton.layer.cornerRadius = 0.5 * shareImageButton.bounds.size.width
         rateImageButton.layer.cornerRadius = 0.5 * rateImageButton.bounds.size.width
         muteImageButton.layer.cornerRadius = 0.5 * muteImageButton.bounds.size.width
+        
+        muteImageButton.setImage(UIImage(named: defaults.boolForKey(IS_MUTE_KEY) ? "mute_icon.png" : "unmute_icon.png"), forState: UIControlState.Normal)
         
         //        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
         scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
@@ -139,14 +149,26 @@ class GameViewController: UIViewController, GameResult {
     
     func pauseGame()
     {
+        if gameState == GameState.Over
+        {
+            return
+        }
         gameState = GameState.Paused
         
         if(scene != nil)
         {
             scene.pause()
             scoreboardView.hidden = false
-            currentScoreLabel.text = "Game Paused"
+            gameOverLabel.text = "Game Paused"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
+            
+            if(defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed)
+            {
+                defaults.setInteger(timeElapsed, forKey: HIGHSCORE_KEY)
+                defaults.synchronize()
+            }
+            
+            highScoreLabel.text = String(format: "High Score-  %02d : %02d", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
             playButton.setImage(UIImage(named: "play.png"), forState: UIControlState.Normal)
         }
         
@@ -156,16 +178,49 @@ class GameViewController: UIViewController, GameResult {
     func gameOver()
     {
         gameState = GameState.Over
+        bgSoundPlayer.pause()
+        
+        if !defaults.boolForKey(IS_MUTE_KEY)
+        {
+            gameOverSoundPlayer.seekToTime(kCMTimeZero)
+            gameOverSoundPlayer.play()
+        }
+        
         if(scene != nil)
         {
             scene.pause()
             scoreboardView.hidden = false
             currentScoreLabel.text = "Game Over"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
+            if(defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed)
+            {
+                defaults.setInteger(timeElapsed, forKey: HIGHSCORE_KEY)
+                defaults.synchronize()
+            }
+            
+            highScoreLabel.text = String(format: "High Score-  %02d : %02d", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
+            
             playButton.setImage(UIImage(named: "replay.png"), forState: UIControlState.Normal)
         }
         
         scoreTimer.invalidate()
+    }
+    
+    func playBackgroundSound()
+    {
+        performSelector(#selector(
+            playSound), withObject: nil, afterDelay: Double(arc4random_uniform(4) + 2))
+    }
+    
+    func playSound()
+    {
+        if gameState != GameState.Resumed || defaults.boolForKey(IS_MUTE_KEY)
+        {
+            return
+        }
+        
+        bgSoundPlayer.seekToTime(kCMTimeZero)
+        bgSoundPlayer.play()
     }
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
@@ -184,6 +239,7 @@ class GameViewController: UIViewController, GameResult {
                 scoreboardView.hidden = true
             }
             
+            playBackgroundSound()
             scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         case GameState.Paused:
             // TODO: Start countdown
@@ -195,6 +251,7 @@ class GameViewController: UIViewController, GameResult {
                 scoreboardView.hidden = true
             }
             
+            playBackgroundSound()
             scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         case GameState.Over:
             gameState = GameState.Resumed
@@ -206,6 +263,7 @@ class GameViewController: UIViewController, GameResult {
             }
             
             timeElapsed = 0
+            playBackgroundSound()
             scoreLabel.text = String(format: "Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
             scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         case GameState.Resumed:
@@ -213,5 +271,11 @@ class GameViewController: UIViewController, GameResult {
         default:
             break
         }
+    }
+    
+    @IBAction func muteButtonPressed(sender: AnyObject) {
+        let isMute = !defaults.boolForKey(IS_MUTE_KEY)
+        defaults.setBool(isMute, forKey: IS_MUTE_KEY)
+        muteImageButton.setImage(UIImage(named: isMute ? "mute_icon.png" : "unmute_icon.png"), forState: UIControlState.Normal)
     }
 }

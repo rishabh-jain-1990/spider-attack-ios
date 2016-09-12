@@ -36,3 +36,6 @@ let SPIDER_SPEED_STEP_DIVIDER = LEVEL_UP_TIME
 let BEE_SPEED_DIVIDER : CGFloat = 13
 
 let FRAMES_PER_SECOND  : CGFloat = 40
+
+let HIGHSCORE_KEY = "Highscore value key"
+let IS_MUTE_KEY = "Is mute value key"
