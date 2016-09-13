@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import AVFoundation
 import Mixpanel
+import GoogleMobileAds
 
 class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSignInUIDelegate {
     
@@ -32,6 +33,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
     @IBOutlet weak var signInTextButton: UIButton!
     @IBOutlet weak var leaderboardTextButton: UIButton!
     @IBOutlet weak var muteImageButton: UIButton!
+    @IBOutlet weak var adView: GADBannerView!
     
     var scene : GameScene!
     var gameState = GameState.NotStarted
@@ -99,6 +101,10 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         
         //        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
         scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+        
+        adView.adUnitID = TEST_AD_UNIT_ID
+        adView.rootViewController = self
+        adView.loadRequest(GADRequest())
     }
     
     override func shouldAutorotate() -> Bool {
@@ -168,6 +174,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         {
             scene.pause()
             scoreboardView.hidden = false
+            adView.hidden = false
             gameOverLabel.text = "Game Paused"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
             
@@ -199,6 +206,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         {
             scene.pause()
             scoreboardView.hidden = false
+            adView.hidden = false
             currentScoreLabel.text = "Game Over"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
             if(defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed)
@@ -253,14 +261,27 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
     }
     
     func didFinishGamesSignInWithError(error: NSError!) {
+        if error != nil
+        {
+            print(error.description)
+        }
+        
         updateSignInButton();
     }
     
     func didFinishGamesSignOutWithError(error: NSError!) {
+        if error != nil
+        {
+            print(error.description)
+        }
         updateSignInButton();
     }
     
     func didFinishGoogleAuthWithError(error: NSError!) {
+        if error != nil
+        {
+            print(error.description)
+        }
         updateSignInButton();
     }
 
@@ -279,6 +300,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
             {
                 scene.unpause()
                 scoreboardView.hidden = true
+                adView.hidden = true
             }
             
             playBackgroundSound()
@@ -291,6 +313,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
             {
                 scene.unpause()
                 scoreboardView.hidden = true
+                adView.hidden = true
             }
             
             playBackgroundSound()
@@ -302,6 +325,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
             {
                 scene.reset()
                 scoreboardView.hidden = true
+                adView.hidden = true
             }
             
             timeElapsed = 0

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        GADMobileAds.configureWithApplicationID(ADMOB_APP_ID);
         return true
     }
 
@@ -42,9 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 //    // Add this function to handle the openURL redirect from OAuth.
-//    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-//        return GPPURLHandler.handleURL(url, sourceApplication: sourceApplication, annotation: annotation);
-//    }
-
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication, annotation: annotation);
+    }
 }
 
