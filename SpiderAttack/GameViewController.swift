@@ -49,7 +49,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         super.viewDidLoad()
         Mixpanel.initialize(token: MIXPANEL_TOKEN)
         
-         GPGManager.sharedInstance().statusDelegate = self
+        GPGManager.sharedInstance().statusDelegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound_bg_short", ofType: "mp3")!)
@@ -132,6 +132,11 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
     {
         timeElapsed += 1
         scoreLabel.text = String(format: "Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
+        
+        if timeElapsed >= LEVEL_UP_TIME && CGFloat(timeElapsed % LEVEL_UP_TIME) < SPIDER_SPEED_STEP_DURATION
+        {
+            scene.speedUp();
+        }
     }
     
     func moveRight() {
@@ -284,7 +289,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         }
         updateSignInButton();
     }
-
+    
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
         pauseGame()

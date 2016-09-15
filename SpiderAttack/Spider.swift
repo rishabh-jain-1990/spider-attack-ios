@@ -18,14 +18,25 @@ class Spider : SKSpriteNode
     private static var spiderImageArray = [SKTexture]()
     var currentImageIndex = 0;
     var countdown = 0
+    let minSpeed : CGFloat
+    let maxSpeed : CGFloat
     
-    init(screenHeight: CGFloat, line: SKSpriteNode)
+    var curSpeed : CGFloat
+    
+    init(width: CGFloat, screenHeight: CGFloat, line: SKSpriteNode)
     {
         self.screenHeight = screenHeight
         self.line = line
         
+        minSpeed = (width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND
+        maxSpeed = 2 * minSpeed
+        curSpeed = minSpeed
+        
         let texture = SKTexture(imageNamed: "spider_00000")
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        
+        let aspectRatio = size.width / size.height
+        size = CGSize(width: width, height: width / aspectRatio)
         
         if Spider.spiderImageArray.isEmpty
         {
@@ -74,7 +85,7 @@ class Spider : SKSpriteNode
     
     func upAction() {
         let revY = screenHeight - CGFloat(arc4random_uniform(UInt32(screenHeight / 2 - size.height))) - size.height / 2;
-        let duration = NSTimeInterval(revY / ((size.width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND))
+        let duration = NSTimeInterval(revY / curSpeed)
         let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: revY), duration: duration);
         runAction(SKAction.sequence([actionRev, SKAction.runBlock(downAction)]))
         
@@ -90,7 +101,7 @@ class Spider : SKSpriteNode
         }
         
         hidden = false
-        let duration = NSTimeInterval(position.y / ((size.width / SPIDER_SPEED_DIVIDER) * FRAMES_PER_SECOND))
+        let duration = NSTimeInterval(position.y / curSpeed)
         let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: size.height / 2), duration: duration);
         SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock(changeImage), SKAction.waitForDuration(1)]))
         runAction(SKAction.sequence([actionRev, SKAction.runBlock(upAction)]))
@@ -154,5 +165,24 @@ class Spider : SKSpriteNode
         }
         
         changeImage()
+    }
+    
+    func speedUp()
+    {
+        curSpeed += minSpeed / (SPIDER_SPEED_STEP_DIVIDER * SPIDER_SPEED_STEP_DURATION);
+        
+        if(curSpeed > maxSpeed)
+        {
+            curSpeed = maxSpeed
+        }
+    }
+    
+    func speedDown() {
+        curSpeed -= minSpeed / (SPIDER_SPEED_STEP_DIVIDER * SPIDER_SPEED_STEP_DURATION);
+        
+        if(curSpeed < minSpeed)
+        {
+            curSpeed = minSpeed
+        }
     }
 }

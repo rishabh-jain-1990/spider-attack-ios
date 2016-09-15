@@ -175,6 +175,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameState = GameState.Resumed
     }
     
+    func speedUp()
+    {
+        for s in spiderArray
+        {
+            s.speedUp()
+        }
+    }
+    
+    func speedDown()
+    {
+        for s in spiderArray
+        {
+            s.speedDown()
+        }
+    }
+    
     func reset()
     {
         gameState = GameState.Resumed
@@ -214,11 +230,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             line.position.x = x
             line.position.y = size.height
             
-            spiderArray.append(Spider(screenHeight: size.height, line: line))
+            spiderArray.append(Spider(width: spiderWidth, screenHeight: size.height, line: line))
             spiderArray[i].zPosition = 4
             spiderArray[i].position = CGPoint(x: x, y: size.height)
-            let aspectRatio = spiderArray[i].size.width/spiderArray[i].size.height
-            spiderArray[i].size = CGSize(width: spiderWidth, height: spiderWidth / aspectRatio)
             spiderArray[i].physicsBody = SKPhysicsBody(rectangleOfSize: spiderArray[i].size) // 1
             spiderArray[i].physicsBody?.dynamic = true // 2
             spiderArray[i].physicsBody?.categoryBitMask = PhysicsCategory.Spider // 3

@@ -29,8 +29,11 @@ let INVINCIBLE_TIME_THRESHOLD = 600
 // Divide the spider width by this to get the spider speed
 let SPIDER_SPEED_DIVIDER : CGFloat = 16.5
 
-// Divide the minimum spider speed by this to get the increment to spider speed
-let SPIDER_SPEED_STEP_DIVIDER = LEVEL_UP_TIME
+// Duration over which speed of spider will increase after LEVEL_UP_TIME
+let SPIDER_SPEED_STEP_DURATION : CGFloat = 10;
+
+// Divide the minimum spider speed by this to get the total increment to spider speed
+let SPIDER_SPEED_STEP_DIVIDER : CGFloat = 4;
 
 // Divide the spider width by this to get the spider speed
 let BEE_SPEED_DIVIDER : CGFloat = 13
