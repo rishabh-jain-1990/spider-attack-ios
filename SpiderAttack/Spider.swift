@@ -79,8 +79,9 @@ class Spider : SKSpriteNode
             downAction()
         }else{
             performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown))
-            performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
         }
+        
+        performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
     }
     
     func upAction() {

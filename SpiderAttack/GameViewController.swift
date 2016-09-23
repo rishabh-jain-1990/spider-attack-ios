@@ -14,7 +14,7 @@ import GoogleMobileAds
 
 class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSignInUIDelegate {
     
-    @IBOutlet weak var gameView: SKView!
+    @IBOutlet weak var gameView: GameView!
     @IBOutlet weak var rightArrow: UIButton!
     @IBOutlet weak var leftArrow: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -64,7 +64,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         scene = GameScene(size: view.bounds.size, gameResultDelegate: self)
         
         // Configure the view.
-        let skView = gameView as SKView
+        let skView = gameView as GameView
         
         skView.showsFPS = true
         
@@ -77,6 +77,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         //scene.scaleMode =
         
         skView.presentScene(scene)
+        skView.frameInterval = 2
         
         rightArrow.addTarget(self, action: #selector(moveRight), forControlEvents: .TouchDown)
         
@@ -102,9 +103,11 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         //        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
         scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         
-        adView.adUnitID = TEST_AD_UNIT_ID
+        adView.adUnitID = LIVE_AD_UNIT_ID
         adView.rootViewController = self
         adView.loadRequest(GADRequest())
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pauseGameScene), name:"Pause", object:nil)
     }
     
     override func shouldAutorotate() -> Bool {
@@ -167,15 +170,16 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         }
     }
     
-    func pauseGame()
+    func pauseGameScene()
     {
         if gameState == GameState.Over
         {
             return
         }
+        
         gameState = GameState.Paused
         
-        if(scene != nil)
+        if scene != nil
         {
             scene.pause()
             scoreboardView.hidden = false
@@ -292,7 +296,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
     
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
-        pauseGame()
+        pauseGameScene()
     }
     
     @IBAction func playButtonPressed(sender: AnyObject) {

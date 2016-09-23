@@ -70,6 +70,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //        myLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         //
         //        self.addChild(myLabel)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewStateChanged), name:"paused", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewStateChanged), name:"un-paused", object:nil)
+    }
+    
+    func viewStateChanged() {
+        switch gameState
+        {
+        case GameState.NotStarted, GameState.Resumed:
+            unpause()
+        case GameState.Over:
+            paused = true
+        case GameState.Paused:
+            pause()
+        default: break
+        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -162,6 +178,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         player.pause()
+        
+        paused = true
         gameState = GameState.Paused
     }
     
@@ -172,6 +190,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         player.unpause()
+        paused = false
         gameState = GameState.Resumed
     }
     
@@ -193,6 +212,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func reset()
     {
+        paused = false
         gameState = GameState.Resumed
         if player == nil
         {
