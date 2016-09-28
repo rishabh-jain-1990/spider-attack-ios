@@ -99,6 +99,9 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         shareTextButton.addTarget(self, action: #selector(shareGame), forControlEvents: .TouchDown)
         shareImageButton.addTarget(self, action: #selector(shareGame), forControlEvents: .TouchDown)
         
+        rateImageButton.addTarget(self, action: #selector(rateGame), forControlEvents: .TouchDown)
+        rateTextButton.addTarget(self, action: #selector(rateGame), forControlEvents: .TouchDown)
+        
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         signInImageButton.layer.cornerRadius = 0.5 * signInImageButton.bounds.size.width
         leaderboardImageButton.layer.cornerRadius = 0.5 * leaderboardImageButton.bounds.size.width
@@ -320,6 +323,11 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
 
         let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
         presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    func rateGame()
+    {
+        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id959379869")!)
     }
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
