@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "75C65A8241702C9B5C6F7F605952835583025B5F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "75C65A8241702C9B5C6F7F605952835583025B5F" : 0,
+    "D714766C1E03E63298DFE09F665FE0AD42DA3D71" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2B8BF077-80BE-40DC-95D6-FD12CE6952AC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "75C65A8241702C9B5C6F7F605952835583025B5F" : "SpiderAttack\/",
+    "D714766C1E03E63298DFE09F665FE0AD42DA3D71" : "..\/..\/workspace\/RunJohny"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SpiderAttack",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SpiderAttack.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/bowstringstudio\/spider-attack.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "75C65A8241702C9B5C6F7F605952835583025B5F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/bowstringstudio\/game.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D714766C1E03E63298DFE09F665FE0AD42DA3D71"
+    }
+  ]
+}
