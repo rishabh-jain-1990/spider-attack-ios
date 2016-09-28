@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpiderAttack/GameViewController.swift"
-            timestampString = "496245331.473036"
+            timestampString = "496676166.215098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -164,11 +164,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpiderAttack/GameViewController.swift"
-            timestampString = "496245331.473036"
+            timestampString = "496676166.215098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "updateScore()"
             landmarkType = "5">
          </BreakpointContent>
@@ -180,11 +180,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpiderAttack/GameViewController.swift"
-            timestampString = "496245331.473036"
+            timestampString = "496676166.215098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "moveRight()"
             landmarkType = "5">
          </BreakpointContent>

@@ -52,6 +52,9 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         GPGManager.sharedInstance().statusDelegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
         
+        
+        GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: true);
+        
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound_bg_short", ofType: "mp3")!)
         var playerItem = AVPlayerItem( URL:alertSound )
         bgSoundPlayer = AVPlayer(playerItem:playerItem)
@@ -89,6 +92,12 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         
         signInImageButton.addTarget(self, action: #selector(signInClicked), forControlEvents: .TouchDown)
         signInTextButton.addTarget(self, action: #selector(signInClicked), forControlEvents: .TouchDown)
+        
+        leaderboardImageButton.addTarget(self, action: #selector(showLeaderboard), forControlEvents: .TouchDown)
+        leaderboardTextButton.addTarget(self, action: #selector(showLeaderboard), forControlEvents: .TouchDown)
+        
+        shareTextButton.addTarget(self, action: #selector(shareGame), forControlEvents: .TouchDown)
+        shareImageButton.addTarget(self, action: #selector(shareGame), forControlEvents: .TouchDown)
         
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         signInImageButton.layer.cornerRadius = 0.5 * signInImageButton.bounds.size.width
@@ -255,7 +264,7 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
     {
         if !GPGManager.sharedInstance().signedIn
         {
-            GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: true);
+            GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: false);
         }
         else
         {
@@ -294,6 +303,24 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         updateSignInButton();
     }
     
+    func showLeaderboard()
+    {
+        GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(BEST_TIME_LEADERBOARD_ID)
+    }
+    
+    func shareGame()
+    {
+        if(defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed)
+        {
+            defaults.setInteger(timeElapsed, forKey: HIGHSCORE_KEY)
+            defaults.synchronize()
+        }
+        
+        let shareText = String(format: "Try and beat my high score of %02d : %02d at Spider Attack https://goo.gl/bOhbH3", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
+
+        let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
+        presentViewController(vc, animated: true, completion: nil)
+    }
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
         pauseGameScene()

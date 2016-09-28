@@ -41,6 +41,7 @@ let BEE_SPEED_DIVIDER : CGFloat = 13
 let FRAMES_PER_SECOND  : CGFloat = 40
 
 let GAMES_SERVICES_CLIENT_ID = "68660848152-ie3ofa0ia3gansd4srp0n2on5o6kvdo8.apps.googleusercontent.com"
+let BEST_TIME_LEADERBOARD_ID = "CgkImMyF5P8BEAIQAA"
 let MIXPANEL_TOKEN = "f3324dff1554582420f2858e546e10d1"
 
 let HIGHSCORE_KEY = "Highscore value key"
