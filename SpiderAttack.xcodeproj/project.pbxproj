@@ -185,7 +185,6 @@
 		658004CB1D81763300E4294C /* creepycrawlers.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = creepycrawlers.ttf; sourceTree = "<group>"; };
 		658004CD1D81763D00E4294C /* chew.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chew.mp3; sourceTree = "<group>"; };
 		658004CE1D81763D00E4294C /* sound_bg_short.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_bg_short.mp3; sourceTree = "<group>"; };
-		65A3795F1D86D06200E205AB /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		65BC75701D702E290074D97C /* SpiderAttack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpiderAttack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65BC75731D702E290074D97C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65BC75771D702E290074D97C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -362,7 +361,6 @@
 				65BC759B1D7848F40074D97C /* Model */,
 				65BC75731D702E290074D97C /* AppDelegate.swift */,
 				65BC75771D702E290074D97C /* GameScene.swift */,
-				65A3795F1D86D06200E205AB /* Header.h */,
 				65BC75791D702E290074D97C /* GameViewController.swift */,
 				65382A171D94101300A7873D /* GameView.swift */,
 				65BC763B1D8089330074D97C /* GameResult.swift */,
@@ -839,7 +837,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bowstringllp.SpiderAttack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = SpiderAttack/Header.h;
 			};
 			name = Debug;
 		};
@@ -855,7 +852,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bowstringllp.SpiderAttack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = SpiderAttack/Header.h;
 			};
 			name = Release;
 		};

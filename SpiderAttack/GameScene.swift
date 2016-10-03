@@ -9,8 +9,9 @@
 import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    let background = SKSpriteNode(imageNamed: "bg.png")
-    let blackWeb = SKSpriteNode(imageNamed: "black_web.png")
+    //    let background = SKSpriteNode(imageNamed: "bg.png")
+//        let background = SKSpriteNode()
+//    let blackWeb = SKSpriteNode(imageNamed: "black_web.png")
     let grass = SKSpriteNode(imageNamed: "grass.png")
     var player : Bee!
     var spiderArray = [Spider]()
@@ -39,23 +40,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
-        
+
+        backgroundColor = SKColor.clearColor()
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
         spiderWidth = size.width / NUM_SPIDERS
         
-        background.zPosition = 1
-        background.size = size
-        background.position = CGPoint(x: (size.width / 2), y: (size.height / 2))
-        addChild(background)
+//        background.zPosition = 1
+//        background.size = size
+//        background.position = CGPoint(x: (size.width / 2), y: (size.height / 2))
+//        addChild(background)
         
         reset()
         
-        blackWeb.zPosition = 3
-        blackWeb.position = CGPoint(x: size.width / 2, y: size.height / 2)
-        blackWeb.size = CGSize(width: size.width, height: size.height)
-        addChild(blackWeb)
+//        blackWeb.zPosition = 3
+//        blackWeb.position = CGPoint(x: size.width / 2, y: size.height / 2)
+//        blackWeb.size = CGSize(width: size.width, height: size.height)
+//        addChild(blackWeb)
         
         grass.zPosition = 3
         grass.position = CGPoint(x: size.width / 2, y: 20)
@@ -106,163 +108,187 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             (secondBody.categoryBitMask & PhysicsCategory.Bee != 0)) {
             // projectileDidCollideWithMonster(firstBody.node as! SKSpriteNode, monster: secondBody.node as! SKSpriteNode)
             
-            if gameState != GameState.Over
-            {
-                gameState = GameState.Over
-                
-                //                removeActionForKey(BG_SOUND_KEY)
-                
-                gameResultDelegate.gameOver()
-            }
-        }
-        
-    }
-    
-    //    func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
-    //        print("Hit")
-    //        //        projectile.removeFromParent()
-    //        //        monster.removeFromParent()
-    //    }
-    
-    func getCountdownValue() -> Int
-    {
-        if (countdownValueList.isEmpty) {
-            for _ in 0..<Int(NUM_SPIDERS)
-            {
-                var num :Int
-                var occurences = 0
-                
-                repeat{
-                    num = Int(arc4random_uniform(10))
-                    occurences = countdownValueList.filter {$0 == num}.count
-                }while occurences > 2
-                countdownValueList.append(num)
-            }
-        }
-        
-        return countdownValueList.removeAtIndex(0);
-    }
-    
-    func moveBeeRight() {
-        if(player != nil)
-        {
-            player.moveRight()
+//            if isPixelFromTextureTransparent((firstBody.node as! SKSpriteNode).texture!, position: contact.contactPoint)
+//            {
+//                if isPixelFromTextureTransparent((secondBody.node as! SKSpriteNode).texture!, position: contact.contactPoint)
+//                {
+                    if gameState != GameState.Over
+                    {
+                        gameState = GameState.Over
+                        
+                        //                removeActionForKey(BG_SOUND_KEY)
+                        
+                        gameResultDelegate.gameOver()
+                    }
+//                }
+//            }
         }
     }
-    
-    func stopMovingBeeRight() {
-        if(player != nil)
+
+func isPixelFromTextureTransparent(texture: SKTexture, position: CGPoint) -> Bool {
+    let view = SKView(frame: CGRectMake(0, 0, 1, 1))
+    let scene = SKScene(size: CGSize(width: 1, height: 1))
+    let sprite  = SKSpriteNode(texture: texture)
+    sprite.anchorPoint = CGPointZero
+    sprite.position = CGPoint(x: -floor(position.x), y: -floor(position.y))
+    scene.anchorPoint = CGPointZero
+    scene.addChild(sprite)
+    view.presentScene(scene)
+    var pixel: [UInt8] = [0, 0, 0, 0]
+    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
+    let context = CGBitmapContextCreate(&pixel, 1, 1, 8, 4, CGColorSpaceCreateDeviceRGB(), bitmapInfo.rawValue);
+    UIGraphicsPushContext(context!);
+    view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+    UIGraphicsPopContext()
+//    return SKColor(red: CGFloat(pixel[0]) / 255.0, green: CGFloat(pixel[1]) / 255.0, blue: CGFloat(pixel[2]) / 255.0, alpha: CGFloat(pixel[3]) / 255.0)
+    return CGFloat(pixel[3]) / 255.0 == 0
+}
+
+//    func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
+//        print("Hit")
+//        //        projectile.removeFromParent()
+//        //        monster.removeFromParent()
+//    }
+
+func getCountdownValue() -> Int
+{
+    if (countdownValueList.isEmpty) {
+        for _ in 0..<Int(NUM_SPIDERS)
         {
-            player.stopMovingRight()
-        }
-    }
-    
-    func moveBeeLeft() {
-        if(player != nil)
-        {
-            player.moveLeft()
-        }
-    }
-    
-    func stopMovingBeeLeft() {
-        if(player != nil)
-        {
-            player.stopMovingLeft()
-        }
-    }
-    
-    func pause() {
-        for i in spiderArray
-        {
-            i.pause()
-        }
-        
-        player.pause()
-        
-        paused = true
-        gameState = GameState.Paused
-    }
-    
-    func unpause() {
-        for i in spiderArray
-        {
-            i.unpause()
-        }
-        
-        player.unpause()
-        paused = false
-        gameState = GameState.Resumed
-    }
-    
-    func speedUp()
-    {
-        for s in spiderArray
-        {
-            s.speedUp()
-        }
-    }
-    
-    func speedDown()
-    {
-        for s in spiderArray
-        {
-            s.speedDown()
-        }
-    }
-    
-    func reset()
-    {
-        paused = false
-        gameState = GameState.Resumed
-        if player == nil
-        {
-            player = Bee(leftX: 0, rightX: size.width, spiderWidth: spiderWidth)
-            player.zPosition = 2
-            let width = spiderWidth / BEE_SIZE_DIVIDER
-            let aspectRatio = player.size.width / player.size.height
-            player.size = CGSize(width: width, height: width / aspectRatio)
-            player.physicsBody = SKPhysicsBody(rectangleOfSize: player.size)
-            player.physicsBody?.dynamic = true
-            player.physicsBody?.categoryBitMask = PhysicsCategory.Bee
-            player.physicsBody?.contactTestBitMask = PhysicsCategory.Spider
-            player.physicsBody?.collisionBitMask = PhysicsCategory.None
-            player.physicsBody?.usesPreciseCollisionDetection = true
-            addChild(player)
-        }
-        
-        player.unpause()
-        player.position = CGPoint(x: size.width / 2, y: player.size.height / 2 + 4)
-        
-        for _ in 0..<spiderArray.count
-        {
-            let s = spiderArray.removeLast()
-            s.line.removeFromParent()
-            s.removeFromParent()
-        }
-        
-        for i in 0..<Int(NUM_SPIDERS)
-        {
-            let x = (spiderWidth / 2) + (spiderWidth * CGFloat(i))
+            var num :Int
+            var occurences = 0
             
-            let line = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(spiderWidth / 100, 0))
-            line.anchorPoint = CGPointMake(0.5, 1)
-            line.zPosition = 4
-            line.position.x = x
-            line.position.y = size.height
-            
-            spiderArray.append(Spider(width: spiderWidth, screenHeight: size.height, line: line))
-            spiderArray[i].zPosition = 4
-            spiderArray[i].position = CGPoint(x: x, y: size.height)
-            spiderArray[i].physicsBody = SKPhysicsBody(rectangleOfSize: spiderArray[i].size) // 1
-            spiderArray[i].physicsBody?.dynamic = true // 2
-            spiderArray[i].physicsBody?.categoryBitMask = PhysicsCategory.Spider // 3
-            spiderArray[i].physicsBody?.contactTestBitMask = PhysicsCategory.Bee // 4
-            spiderArray[i].physicsBody?.collisionBitMask = PhysicsCategory.None // 5
-            spiderArray[i].hidden = true
-            addChild(spiderArray[i])
-            addChild(line)
-            
-            spiderArray[i].startTimer(getCountdownValue())
+            repeat{
+                num = Int(arc4random_uniform(10))
+                occurences = countdownValueList.filter {$0 == num}.count
+            }while occurences > 2
+            countdownValueList.append(num)
         }
     }
+    
+    return countdownValueList.removeAtIndex(0);
+}
+
+func moveBeeRight() {
+    if(player != nil)
+    {
+        player.moveRight()
+    }
+}
+
+func stopMovingBeeRight() {
+    if(player != nil)
+    {
+        player.stopMovingRight()
+    }
+}
+
+func moveBeeLeft() {
+    if(player != nil)
+    {
+        player.moveLeft()
+    }
+}
+
+func stopMovingBeeLeft() {
+    if(player != nil)
+    {
+        player.stopMovingLeft()
+    }
+}
+
+func pause() {
+    for i in spiderArray
+    {
+        i.pause()
+    }
+    
+    player.pause()
+    
+    paused = true
+    gameState = GameState.Paused
+}
+
+func unpause() {
+    for i in spiderArray
+    {
+        i.unpause()
+    }
+    
+    player.unpause()
+    paused = false
+    gameState = GameState.Resumed
+}
+
+func speedUp()
+{
+    for s in spiderArray
+    {
+        s.speedUp()
+    }
+}
+
+func speedDown()
+{
+    for s in spiderArray
+    {
+        s.speedDown()
+    }
+}
+
+func reset()
+{
+    paused = false
+    gameState = GameState.Resumed
+    if player == nil
+    {
+        player = Bee(leftX: 0, rightX: size.width, spiderWidth: spiderWidth)
+        player.zPosition = 2
+        let width = spiderWidth / BEE_SIZE_DIVIDER
+        let aspectRatio = player.size.width / player.size.height
+        player.size = CGSize(width: width, height: width / aspectRatio)
+        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
+        player.physicsBody?.dynamic = true
+        player.physicsBody?.categoryBitMask = PhysicsCategory.Bee
+        player.physicsBody?.contactTestBitMask = PhysicsCategory.Spider
+        player.physicsBody?.collisionBitMask = PhysicsCategory.None
+        player.physicsBody?.usesPreciseCollisionDetection = true
+        addChild(player)
+    }
+    
+    player.unpause()
+    player.position = CGPoint(x: size.width / 2, y: player.size.height / 2 + 4)
+    
+    for _ in 0..<spiderArray.count
+    {
+        let s = spiderArray.removeLast()
+        s.line.removeFromParent()
+        s.removeFromParent()
+    }
+    
+    for i in 0..<Int(NUM_SPIDERS)
+    {
+        let x = (spiderWidth / 2) + (spiderWidth * CGFloat(i))
+        
+        let line = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(spiderWidth / 100, 0))
+        line.anchorPoint = CGPointMake(0.5, 1)
+        line.zPosition = 4
+        line.position.x = x
+        line.position.y = size.height
+        
+        spiderArray.append(Spider(width: spiderWidth, screenHeight: size.height, line: line))
+        spiderArray[i].zPosition = 4
+        spiderArray[i].position = CGPoint(x: x, y: size.height)
+        spiderArray[i].physicsBody = SKPhysicsBody(texture: spiderArray[i].texture!, size: spiderArray[i].size) // 1
+        spiderArray[i].physicsBody?.dynamic = true // 2
+        spiderArray[i].physicsBody?.categoryBitMask = PhysicsCategory.Spider // 3
+        spiderArray[i].physicsBody?.contactTestBitMask = PhysicsCategory.Bee // 4
+        spiderArray[i].physicsBody?.collisionBitMask = PhysicsCategory.None // 5
+        spiderArray[i].hidden = true
+        addChild(spiderArray[i])
+        addChild(line)
+        
+        spiderArray[i].startTimer(getCountdownValue())
+    }
+}
 }

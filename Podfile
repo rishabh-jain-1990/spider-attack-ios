@@ -8,7 +8,6 @@ target 'SpiderAttack' do
   # Pods for SpiderAttack
 
 pod 'Mixpanel-swift'
-pod 'GooglePlayGames’
 pod 'Firebase/Core'
 pod 'Firebase/AdMob'
 

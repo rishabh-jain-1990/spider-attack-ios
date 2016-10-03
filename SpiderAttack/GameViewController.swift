@@ -11,8 +11,9 @@ import SpriteKit
 import AVFoundation
 import Mixpanel
 import GoogleMobileAds
+import GameKit
 
-class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSignInUIDelegate {
+class GameViewController: UIViewController, GameResult, GKGameCenterControllerDelegate {
     
     @IBOutlet weak var gameView: GameView!
     @IBOutlet weak var rightArrow: UIButton!
@@ -24,14 +25,13 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
     @IBOutlet weak var currentScoreLabel: UILabel!
     @IBOutlet weak var highScoreLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var signInImageButton: UIButton!
     @IBOutlet weak var leaderboardImageButton: UIButton!
     @IBOutlet weak var rateImageButton: UIButton!
     @IBOutlet weak var shareImageButton: UIButton!
     @IBOutlet weak var shareTextButton: UIButton!
     @IBOutlet weak var rateTextButton: UIButton!
-    @IBOutlet weak var signInTextButton: UIButton!
     @IBOutlet weak var leaderboardTextButton: UIButton!
+    @IBOutlet weak var muteTextButton: UIButton!
     @IBOutlet weak var muteImageButton: UIButton!
     @IBOutlet weak var adView: GADBannerView!
     
@@ -44,16 +44,17 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
     
     var bgSoundPlayer = AVPlayer()
     var gameOverSoundPlayer = AVPlayer()
+    var gcDefaultLeaderBoard = ""
+    var gcEnabled = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Mixpanel.initialize(token: MIXPANEL_TOKEN)
         
-        GPGManager.sharedInstance().statusDelegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
+        //        GPGManager.sharedInstance().statusDelegate = self
+        //        GIDSignIn.sharedInstance().uiDelegate = self
         
-        
-        GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: true);
+        //        GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: true);
         
         var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound_bg_short", ofType: "mp3")!)
         var playerItem = AVPlayerItem( URL:alertSound )
@@ -64,24 +65,6 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         playerItem = AVPlayerItem( URL:alertSound )
         gameOverSoundPlayer = AVPlayer(playerItem:playerItem)
         
-        scene = GameScene(size: view.bounds.size, gameResultDelegate: self)
-        
-        // Configure the view.
-        let skView = gameView as GameView
-        
-        skView.showsFPS = true
-        
-        skView.showsNodeCount = true
-        
-        /* Sprite Kit applies additional optimizations to improve rendering performance */
-        skView.ignoresSiblingOrder = true
-        
-        /* Set the scale mode to scale to fit the window */
-        //scene.scaleMode =
-        
-        skView.presentScene(scene)
-        skView.frameInterval = 2
-        
         rightArrow.addTarget(self, action: #selector(moveRight), forControlEvents: .TouchDown)
         
         rightArrow.addTarget(self, action: #selector(stopMovingRight), forControlEvents: [.TouchUpOutside, .TouchUpInside])
@@ -89,9 +72,6 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         leftArrow.addTarget(self, action: #selector(moveLeft), forControlEvents: .TouchDown)
         
         leftArrow.addTarget(self, action: #selector(stopMovingLeft), forControlEvents: [.TouchUpOutside, .TouchUpInside])
-        
-        signInImageButton.addTarget(self, action: #selector(signInClicked), forControlEvents: .TouchDown)
-        signInTextButton.addTarget(self, action: #selector(signInClicked), forControlEvents: .TouchDown)
         
         leaderboardImageButton.addTarget(self, action: #selector(showLeaderboard), forControlEvents: .TouchDown)
         leaderboardTextButton.addTarget(self, action: #selector(showLeaderboard), forControlEvents: .TouchDown)
@@ -103,16 +83,14 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         rateTextButton.addTarget(self, action: #selector(rateGame), forControlEvents: .TouchDown)
         
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
-        signInImageButton.layer.cornerRadius = 0.5 * signInImageButton.bounds.size.width
         leaderboardImageButton.layer.cornerRadius = 0.5 * leaderboardImageButton.bounds.size.width
         shareImageButton.layer.cornerRadius = 0.5 * shareImageButton.bounds.size.width
         rateImageButton.layer.cornerRadius = 0.5 * rateImageButton.bounds.size.width
         muteImageButton.layer.cornerRadius = 0.5 * muteImageButton.bounds.size.width
         
         muteImageButton.setImage(UIImage(named: defaults.boolForKey(IS_MUTE_KEY) ? "mute_icon.png" : "unmute_icon.png"), forState: UIControlState.Normal)
-        updateSignInButton()
+        muteTextButton.setTitle(defaults.boolForKey(IS_MUTE_KEY) ? "Sound Off" : "Sound On", forState: UIControlState.Normal)
         
-        //        signInTextButton.titleLabel!.font =  UIFont(name: "creepycrawlers", size: 20)
         scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         
         adView.adUnitID = LIVE_AD_UNIT_ID
@@ -120,6 +98,34 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         adView.loadRequest(GADRequest())
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pauseGameScene), name:"Pause", object:nil)
+        
+        self.authenticateLocalPlayer()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        if (scene == nil)
+        {
+            // Configure the view.
+            let skView = gameView as GameView
+            
+            let size = CGSize(width: skView.bounds.size.width, height: skView.bounds.size.height - ((UIDevice.currentDevice().userInterfaceIdiom == .Phone ? 4 : 2) * leftArrow.bounds.size.height))
+            scene = GameScene(size: size, gameResultDelegate: self)
+            skView.allowsTransparency = true
+            skView.showsFPS = true
+            
+            skView.showsNodeCount = true
+            
+            /* Sprite Kit applies additional optimizations to improve rendering performance */
+            skView.ignoresSiblingOrder = true
+            
+            /* Set the scale mode to scale to fit the window */
+//            scene.scaleMode = SKSceneScaleMode.AspectFill
+//            scene.size.width = view.bounds.width
+            
+            //        scene.size = skView.bounds.size
+            skView.presentScene(scene)
+            skView.frameInterval = 2
+        }
     }
     
     override func shouldAutorotate() -> Bool {
@@ -236,6 +242,18 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
                 defaults.synchronize()
             }
             
+            let sScore = GKScore(leaderboardIdentifier: gcDefaultLeaderBoard)
+            sScore.value = Int64(timeElapsed)
+            
+            GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    print("Score submitted")
+                    
+                }
+            })
+            
             highScoreLabel.text = String(format: "High Score-  %02d : %02d", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
             
             playButton.setImage(UIImage(named: "replay.png"), forState: UIControlState.Normal)
@@ -263,71 +281,92 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         bgSoundPlayer.play()
     }
     
-    func signInClicked()
-    {
-        if !GPGManager.sharedInstance().signedIn
-        {
-            GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: false);
-        }
-        else
-        {
-            GPGManager.sharedInstance().signOut()
-            updateSignInButton()
-        }
-    }
-    
-    func updateSignInButton() {
-        signInImageButton.setImage(UIImage(named: GPGManager.sharedInstance().signedIn ? "controller_filled.png" : "controller.png"), forState: UIControlState.Normal)
-        signInTextButton.setTitle(GPGManager.sharedInstance().signedIn ? "Sign Out" : "Sign In", forState: UIControlState.Normal)
-    }
-    
-    func didFinishGamesSignInWithError(error: NSError!) {
-        if error != nil
-        {
-            print(error.description)
-        }
-        
-        updateSignInButton();
-    }
-    
-    func didFinishGamesSignOutWithError(error: NSError!) {
-        if error != nil
-        {
-            print(error.description)
-        }
-        updateSignInButton();
-    }
-    
-    func didFinishGoogleAuthWithError(error: NSError!) {
-        if error != nil
-        {
-            print(error.description)
-        }
-        updateSignInButton();
-    }
-    
     func showLeaderboard()
     {
-        GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(BEST_TIME_LEADERBOARD_ID)
+        if gcEnabled
+        {
+            //            GPGLauncherController.sharedInstance().presentLeaderboardWithLeaderboardId(BEST_TIME_LEADERBOARD_ID)
+            
+            let gcVC: GKGameCenterViewController = GKGameCenterViewController()
+            gcVC.gameCenterDelegate = self
+            gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+            gcVC.leaderboardIdentifier = gcDefaultLeaderBoard
+            self.presentViewController(gcVC, animated: true, completion: nil)
+        }else{
+            let dialog = UIAlertController(title: "Error",
+                                           message: "Please sign in to view the loeaderboard",
+                                           preferredStyle: UIAlertControllerStyle.Alert)
+            // Present the dialog.
+            presentViewController(dialog,
+                                  animated: false,
+                                  completion: nil)
+            
+            let delay = 2.0 * Double(NSEC_PER_SEC)
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(time, dispatch_get_main_queue(), {
+                dialog.dismissViewControllerAnimated(true, completion: nil)
+            })
+        }
     }
     
-    func shareGame()
+    func shareGame(sourceView: UIView)
     {
-        if(defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed)
+        if defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed
         {
             defaults.setInteger(timeElapsed, forKey: HIGHSCORE_KEY)
             defaults.synchronize()
         }
         
         let shareText = String(format: "Try and beat my high score of %02d : %02d at Spider Attack https://goo.gl/bOhbH3", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
-
+        
         let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
+        
+        vc.popoverPresentationController?.sourceView = sourceView
+        vc.popoverPresentationController?.sourceRect = sourceView.bounds
+        
         presentViewController(vc, animated: true, completion: nil)
+        
     }
     
     func rateGame()
     {
-        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id959379869")!)
+        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id1160146438")!)
+    }
+    
+    func authenticateLocalPlayer() {
+        let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
+        
+        localPlayer.authenticateHandler = {(ViewController, error) -> Void in
+            if((ViewController) != nil) {
+                // 1 Show login if player is not logged in
+                self.presentViewController(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.authenticated) {
+                // 2 Player is already euthenticated & logged in, load game center
+                self.gcEnabled = true
+                
+                // Get the default leaderboard ID
+                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                    if error != nil {
+                        print(error)
+                    } else {
+                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
+                    }
+                })
+                
+                
+            } else {
+                // 3 Game center is not enabled on the users device
+                self.gcEnabled = false
+                print("Local player could not be authenticated, disabling game center")
+                print(error)
+            }
+            
+        }
+        
+    }
+    
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func pauseGame(sender: UITapGestureRecognizer) {
@@ -387,5 +426,6 @@ class GameViewController: UIViewController, GameResult, GPGStatusDelegate, GIDSi
         let isMute = !defaults.boolForKey(IS_MUTE_KEY)
         defaults.setBool(isMute, forKey: IS_MUTE_KEY)
         muteImageButton.setImage(UIImage(named: isMute ? "mute_icon.png" : "unmute_icon.png"), forState: UIControlState.Normal)
+        muteTextButton.setTitle(defaults.boolForKey(IS_MUTE_KEY) ? "Sound Off" : "Sound On", forState: UIControlState.Normal)
     }
 }
