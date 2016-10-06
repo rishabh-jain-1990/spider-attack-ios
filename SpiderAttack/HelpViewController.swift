@@ -22,8 +22,8 @@ class HelpViewController: UIViewController {
     }
     
 
-    @IBAction func backPresses(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backPresses(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

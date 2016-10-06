@@ -39,10 +39,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
 
-        backgroundColor = SKColor.clearColor()
-        physicsWorld.gravity = CGVectorMake(0, 0)
+        backgroundColor = SKColor.clear
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
         spiderWidth = size.width / NUM_SPIDERS
@@ -73,8 +73,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //
         //        self.addChild(myLabel)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewStateChanged), name:"paused", object:nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(viewStateChanged), name:"un-paused", object:nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewStateChanged), name:NSNotification.Name(rawValue: "paused"), object:nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(viewStateChanged), name:NSNotification.Name(rawValue: "un-paused"), object:nil)
     }
     
     func viewStateChanged() {
@@ -83,14 +83,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case GameState.NotStarted, GameState.Resumed:
             unpause()
         case GameState.Over:
-            paused = true
+            isPaused = true
         case GameState.Paused:
             pause()
         default: break
         }
     }
     
-    func didBeginContact(contact: SKPhysicsContact) {
+    func didBegin(_ contact: SKPhysicsContact) {
         
         // 1
         var firstBody: SKPhysicsBody
@@ -112,33 +112,40 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            {
 //                if isPixelFromTextureTransparent((secondBody.node as! SKSpriteNode).texture!, position: contact.contactPoint)
 //                {
-                    if gameState != GameState.Over
-                    {
-                        gameState = GameState.Over
-                        
-                        //                removeActionForKey(BG_SOUND_KEY)
-                        
-                        gameResultDelegate.gameOver()
-                    }
 //                }
 //            }
+            
+//            performSelector(#selector(gameOver), withObject: nil, afterDelay: Double(0.01))
+            gameOver()
         }
     }
 
-func isPixelFromTextureTransparent(texture: SKTexture, position: CGPoint) -> Bool {
-    let view = SKView(frame: CGRectMake(0, 0, 1, 1))
+    func gameOver()
+    {
+        if gameState != GameState.Over
+        {
+            
+            gameState = GameState.Over
+            
+            //                removeActionForKey(BG_SOUND_KEY)
+            
+            gameResultDelegate.gameOver()
+        }
+    }
+func isPixelFromTextureTransparent(_ texture: SKTexture, position: CGPoint) -> Bool {
+    let view = SKView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
     let scene = SKScene(size: CGSize(width: 1, height: 1))
     let sprite  = SKSpriteNode(texture: texture)
-    sprite.anchorPoint = CGPointZero
+    sprite.anchorPoint = CGPoint.zero
     sprite.position = CGPoint(x: -floor(position.x), y: -floor(position.y))
-    scene.anchorPoint = CGPointZero
+    scene.anchorPoint = CGPoint.zero
     scene.addChild(sprite)
     view.presentScene(scene)
     var pixel: [UInt8] = [0, 0, 0, 0]
-    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
-    let context = CGBitmapContextCreate(&pixel, 1, 1, 8, 4, CGColorSpaceCreateDeviceRGB(), bitmapInfo.rawValue);
+    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+    let context = CGContext(data: &pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo.rawValue);
     UIGraphicsPushContext(context!);
-    view.drawViewHierarchyInRect(view.bounds, afterScreenUpdates: true)
+    view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
     UIGraphicsPopContext()
 //    return SKColor(red: CGFloat(pixel[0]) / 255.0, green: CGFloat(pixel[1]) / 255.0, blue: CGFloat(pixel[2]) / 255.0, alpha: CGFloat(pixel[3]) / 255.0)
     return CGFloat(pixel[3]) / 255.0 == 0
@@ -166,7 +173,7 @@ func getCountdownValue() -> Int
         }
     }
     
-    return countdownValueList.removeAtIndex(0);
+    return countdownValueList.remove(at: 0);
 }
 
 func moveBeeRight() {
@@ -205,7 +212,7 @@ func pause() {
     
     player.pause()
     
-    paused = true
+    isPaused = true
     gameState = GameState.Paused
 }
 
@@ -216,7 +223,7 @@ func unpause() {
     }
     
     player.unpause()
-    paused = false
+    isPaused = false
     gameState = GameState.Resumed
 }
 
@@ -238,7 +245,7 @@ func speedDown()
 
 func reset()
 {
-    paused = false
+    isPaused = false
     gameState = GameState.Resumed
     if player == nil
     {
@@ -247,12 +254,6 @@ func reset()
         let width = spiderWidth / BEE_SIZE_DIVIDER
         let aspectRatio = player.size.width / player.size.height
         player.size = CGSize(width: width, height: width / aspectRatio)
-        player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
-        player.physicsBody?.dynamic = true
-        player.physicsBody?.categoryBitMask = PhysicsCategory.Bee
-        player.physicsBody?.contactTestBitMask = PhysicsCategory.Spider
-        player.physicsBody?.collisionBitMask = PhysicsCategory.None
-        player.physicsBody?.usesPreciseCollisionDetection = true
         addChild(player)
     }
     
@@ -270,8 +271,8 @@ func reset()
     {
         let x = (spiderWidth / 2) + (spiderWidth * CGFloat(i))
         
-        let line = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(spiderWidth / 100, 0))
-        line.anchorPoint = CGPointMake(0.5, 1)
+        let line = SKSpriteNode(color: UIColor.black, size: CGSize(width: spiderWidth / 100, height: 0))
+        line.anchorPoint = CGPoint(x: 0.5, y: 1)
         line.zPosition = 4
         line.position.x = x
         line.position.y = size.height
@@ -279,16 +280,11 @@ func reset()
         spiderArray.append(Spider(width: spiderWidth, screenHeight: size.height, line: line))
         spiderArray[i].zPosition = 4
         spiderArray[i].position = CGPoint(x: x, y: size.height)
-        spiderArray[i].physicsBody = SKPhysicsBody(texture: spiderArray[i].texture!, size: spiderArray[i].size) // 1
-        spiderArray[i].physicsBody?.dynamic = true // 2
-        spiderArray[i].physicsBody?.categoryBitMask = PhysicsCategory.Spider // 3
-        spiderArray[i].physicsBody?.contactTestBitMask = PhysicsCategory.Bee // 4
-        spiderArray[i].physicsBody?.collisionBitMask = PhysicsCategory.None // 5
-        spiderArray[i].hidden = true
+        spiderArray[i].isHidden = true
         addChild(spiderArray[i])
         addChild(line)
         
-        spiderArray[i].startTimer(getCountdownValue())
+        spiderArray[i].startTimer(countdown: getCountdownValue())
     }
 }
 }

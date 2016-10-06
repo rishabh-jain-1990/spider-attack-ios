@@ -8,107 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		0A6B9A5514DF4C0C062B064FD4869390 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		0B7E0D4903457CB68E3E662FA9AA8C43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		1F523B6B2B830342889CD0376DDE8BA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		262F8582DE4718DCAF48A6CE3CA02C19 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5AD865050D057A1895F7C1C7251129 /* Logger.swift */; };
+		32D0A256816185C35B26C6A2A1B8697F /* Pods-SpiderAttack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8046C1273AED8EFDC0652D692AFA2F06 /* Pods-SpiderAttack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		340C7E912F44510D7DF518F2491B1C94 /* Pods-SpiderAttackTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 396AD33CCC4BC887D68DE2A93C77AF10 /* Pods-SpiderAttackTests-dummy.m */; };
-		3BC21B77C6B310E015BD51732EA3BB20 /* PrintLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3812FCF481F8A67F6B777CCD51A520FC /* PrintLogging.swift */; };
-		48E185C0F97C44550E32D81C31EFB021 /* MixpanelInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F73D73C2C0E782AFC6F4380EBF43D /* MixpanelInstance.swift */; };
-		55F936BC8D36612AA20665F9CAE04663 /* Pods-SpiderAttack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64737CB5BC9DB9B193CDA4CE8DA8939B /* Pods-SpiderAttack-dummy.m */; };
-		60BEAF680DE64CF2DBE5A6CCD7CAE0F9 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D58AB6A5631AB99C4ED08A09EB0C2B6 /* Track.swift */; };
-		66C9395478322B1DBB95099C325EB654 /* FileLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76285B5823394C4289F62DDABEB5EC50 /* FileLogging.swift */; };
-		7C0C1424FD9B5E3CFEFBD2EDCB12627F /* FlushRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF117555B07E8D0E67B7E4CDE477DB1 /* FlushRequest.swift */; };
-		849B307259278A3A3A06601773D12F67 /* Mixpanel-swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 67322A2F7764B81F7CAC43BADC0DCA36 /* Mixpanel-swift-dummy.m */; };
-		9A1CBCB42F13C83C43D6D6F295F29E34 /* AutomaticProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA36FCDF26A02B59A3C0E2A2D0C7BF0 /* AutomaticProperties.swift */; };
-		A7A7B2ED6E22B4C4357EAAF3A1F633D1 /* Flush.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3546EC4ACE1BBC6AB01C15C1D39EF5 /* Flush.swift */; };
-		A82FE0B23787C057E6DB45063744B38C /* JSONHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FF91C40C47A53F41534EC24A630898 /* JSONHandler.swift */; };
-		B59932658A059A1230E215F470082F22 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D77127CC1FC3E35F28EC7AD22FA929A /* Error.swift */; };
-		B68EF510EF521B6A02F8772BA736FE26 /* Mixpanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0EB7468F716965C775BF09FFFEDE12 /* Mixpanel.swift */; };
-		B745E7DD1FCDD4947D1D2844FB23681A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7AD02956A056C0B51C8922A4B2CDCF /* Persistence.swift */; };
-		CFD0A409E8F4B9798CFA72EAEC24521F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809B798F844B8E16FED0B7DACF526144 /* Network.swift */; };
-		D328D1B393ECD2284976EBFC51ECBC6B /* People.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61A8F67536671745666E70B9D10E95B /* People.swift */; };
-		DF5BC4299F004872580297A4057FFCB2 /* Pods-SpiderAttack-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8046C1273AED8EFDC0652D692AFA2F06 /* Pods-SpiderAttack-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EA96B65256A388918B7B486C890AB396 /* Mixpanel-swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 55C73AB1CDEEA92156FE5134AC98C343 /* Mixpanel-swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		75F24D74411A7682997D9AAB13D268F0 /* Pods-SpiderAttack-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 64737CB5BC9DB9B193CDA4CE8DA8939B /* Pods-SpiderAttack-dummy.m */; };
+		D2E0848A75ADCA2AB5429A0D6710C5EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		F941764991C82945BC13F0967929DA15 /* Pods-SpiderAttackTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 44956CEF755715742DB4D42E56CE4E8C /* Pods-SpiderAttackTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FE5C6605142A4E95CFA762B8802B6527 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4B239CA89688700E1A6C9C3BD092BC /* Constants.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E517999681DB1696D739758B2ED4D545 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 33A15922D9CFBB1ED72A42B512587636;
-			remoteInfo = "Mixpanel-swift";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		09A22DF274504DDF97DE68EA889969D4 /* Pods-SpiderAttack.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpiderAttack.modulemap"; sourceTree = "<group>"; };
-		0BF117555B07E8D0E67B7E4CDE477DB1 /* FlushRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlushRequest.swift; path = Mixpanel/FlushRequest.swift; sourceTree = "<group>"; };
 		0CCC559E60E4A3C734DDBC3FBD46D6DE /* Pods-SpiderAttack-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpiderAttack-frameworks.sh"; sourceTree = "<group>"; };
+		121949731ABFFF9EB3988D786D6E11F2 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		1FDC075E506D375EE4126F959D360AE9 /* Pods-SpiderAttackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpiderAttackTests.debug.xcconfig"; sourceTree = "<group>"; };
 		204D402751C15019110C3C68E54CD036 /* Pods-SpiderAttackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpiderAttackTests.release.xcconfig"; sourceTree = "<group>"; };
-		2A7AD02956A056C0B51C8922A4B2CDCF /* Persistence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Persistence.swift; path = Mixpanel/Persistence.swift; sourceTree = "<group>"; };
-		3812FCF481F8A67F6B777CCD51A520FC /* PrintLogging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PrintLogging.swift; path = Mixpanel/PrintLogging.swift; sourceTree = "<group>"; };
-		3839CD99AF37806B1EB6312F547BA236 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		249A92EF10B1333AA57CA6868A723CD2 /* Pods_SpiderAttackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiderAttackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3902DB50170FC80715C7011953174C96 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Frameworks/frameworks/GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
+		392860EB6E36ABA79E99E6174CEE5902 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
 		396AD33CCC4BC887D68DE2A93C77AF10 /* Pods-SpiderAttackTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpiderAttackTests-dummy.m"; sourceTree = "<group>"; };
-		3C0EB7468F716965C775BF09FFFEDE12 /* Mixpanel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mixpanel.swift; path = Mixpanel/Mixpanel.swift; sourceTree = "<group>"; };
 		44956CEF755715742DB4D42E56CE4E8C /* Pods-SpiderAttackTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpiderAttackTests-umbrella.h"; sourceTree = "<group>"; };
-		4587DB6C01BB4628C72A7DD62A05FF99 /* Pods_SpiderAttack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiderAttack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		489E561A7F3F2CF71F56A5C4F0A53CC0 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
 		499660DA403E8E3BAA29E0966302C970 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55C73AB1CDEEA92156FE5134AC98C343 /* Mixpanel-swift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-swift-umbrella.h"; sourceTree = "<group>"; };
+		57A94EC1469FAAD37A678C560D15ABAF /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
 		5C67A74BB4974EC87D40504614FE4912 /* Pods-SpiderAttackTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpiderAttackTests.modulemap"; sourceTree = "<group>"; };
-		5D58AB6A5631AB99C4ED08A09EB0C2B6 /* Track.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Track.swift; path = Mixpanel/Track.swift; sourceTree = "<group>"; };
-		5F4B239CA89688700E1A6C9C3BD092BC /* Constants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Mixpanel/Constants.swift; sourceTree = "<group>"; };
+		5FCE1C40675C680206DC25A235B77F7B /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
 		64737CB5BC9DB9B193CDA4CE8DA8939B /* Pods-SpiderAttack-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpiderAttack-dummy.m"; sourceTree = "<group>"; };
-		67322A2F7764B81F7CAC43BADC0DCA36 /* Mixpanel-swift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Mixpanel-swift-dummy.m"; sourceTree = "<group>"; };
-		67AB33EEA935FF8AC2C3263A91EAC620 /* Mixpanel-swift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-swift-prefix.pch"; sourceTree = "<group>"; };
-		6CA36FCDF26A02B59A3C0E2A2D0C7BF0 /* AutomaticProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutomaticProperties.swift; path = Mixpanel/AutomaticProperties.swift; sourceTree = "<group>"; };
+		694A00359C8642FC8820DEAFB29C3328 /* Pods_SpiderAttack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiderAttack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DD7982495A9512B5534EC4EB859944B /* Pods-SpiderAttack-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpiderAttack-acknowledgements.plist"; sourceTree = "<group>"; };
-		708178001D021E29FAB304CB3E980740 /* Pods_SpiderAttackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpiderAttackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		74FF91C40C47A53F41534EC24A630898 /* JSONHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSONHandler.swift; path = Mixpanel/JSONHandler.swift; sourceTree = "<group>"; };
-		76285B5823394C4289F62DDABEB5EC50 /* FileLogging.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileLogging.swift; path = Mixpanel/FileLogging.swift; sourceTree = "<group>"; };
 		7C6CE17ECE59558F896B79144074EE3D /* Pods-SpiderAttack-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpiderAttack-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8046C1273AED8EFDC0652D692AFA2F06 /* Pods-SpiderAttack-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpiderAttack-umbrella.h"; sourceTree = "<group>"; };
-		809B798F844B8E16FED0B7DACF526144 /* Network.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Network.swift; path = Mixpanel/Network.swift; sourceTree = "<group>"; };
-		8462C7BE3F4A71551BCA39C8953F8C3C /* Mixpanel-swift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Mixpanel-swift.modulemap"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B4EB9F8DDE7C3F77DCCE89B102D6FFE /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Analytics/Sources/Firebase.h; sourceTree = "<group>"; };
-		9D77127CC1FC3E35F28EC7AD22FA929A /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Error.swift; path = Mixpanel/Error.swift; sourceTree = "<group>"; };
-		A522236F3828F9AB4E1B9440BAF87E42 /* Mixpanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mixpanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5DF83B075FB34FB97C9B11C0F7AF397 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Frameworks/frameworks/FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		A7E0AB5F1BCBA0C287EE254F8222F1B7 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Frameworks/GoogleUtilities.framework; sourceTree = "<group>"; };
-		A8299FB9F4C97D377D3BBA33F324FA88 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		ABD15FBA37AD1B03DDDF68A52C7A5F18 /* Mixpanel-swift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Mixpanel-swift.xcconfig"; sourceTree = "<group>"; };
+		A2997E4115F731CDE3CF8400DF06CC71 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
+		AE02BCEFF657481CF3791D23CA47211D /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Frameworks/frameworks/GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		AF604A1C7CB2EFF630B27C33AE290688 /* Pods-SpiderAttackTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpiderAttackTests-resources.sh"; sourceTree = "<group>"; };
 		B0043EBD2BA621B1B92485BF5E261FB0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5928FDF0CF787D5E0EB8FE681F208E9 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
-		B61A8F67536671745666E70B9D10E95B /* People.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = People.swift; path = Mixpanel/People.swift; sourceTree = "<group>"; };
-		BDB44821FC52438CB0DEBAE66A7D5F4C /* FIRInstanceID.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstanceID.h; path = Sources/FIRInstanceID.h; sourceTree = "<group>"; };
 		BF15391CBFCACFC5D4B9DC959E564726 /* Pods-SpiderAttack-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpiderAttack-resources.sh"; sourceTree = "<group>"; };
-		BF8F73D73C2C0E782AFC6F4380EBF43D /* MixpanelInstance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MixpanelInstance.swift; path = Mixpanel/MixpanelInstance.swift; sourceTree = "<group>"; };
-		C9E34E4C80F01165673AC3073913D4C2 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		CA3546EC4ACE1BBC6AB01C15C1D39EF5 /* Flush.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Flush.swift; path = Mixpanel/Flush.swift; sourceTree = "<group>"; };
-		CE5AD865050D057A1895F7C1C7251129 /* Logger.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Mixpanel/Logger.swift; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		D0937EC8DEDD725AC6802A6F6E8A57B7 /* Pods-SpiderAttack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpiderAttack.debug.xcconfig"; sourceTree = "<group>"; };
 		D0F3854F5A05D93BFBB2DFDDB0B3C047 /* Pods-SpiderAttack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpiderAttack.release.xcconfig"; sourceTree = "<group>"; };
+		DAD65CAFE5F43CE68F273A7614E7630C /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		DCA39998D98D0634DFE3737B53E37A87 /* Pods-SpiderAttackTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpiderAttackTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		E779035BF4C9E3C830FF204F8653A1F3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7897FEA533CAEDCE8CE5D854508F9F3 /* Pods-SpiderAttackTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpiderAttackTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FA20C85CA59C1DD988871F990ED6A6D8 /* Pods-SpiderAttackTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpiderAttackTests-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6D4690520570BDFC20BDC3855AFF65DA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F523B6B2B830342889CD0376DDE8BA8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		745314831F30F334A603E755739D22BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -117,38 +60,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B93CA1BA0FF57066B91E814BEBB2E2DA /* Frameworks */ = {
+		D0AAA9A6747AB5E6AF3477A6D2922FB4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B7E0D4903457CB68E3E662FA9AA8C43 /* Foundation.framework in Frameworks */,
+				D2E0848A75ADCA2AB5429A0D6710C5EF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		062E188C327C28212529BB8F5D46D504 /* FirebaseInstanceID */ = {
+		0B9176D8F8FF4A50313A4AAB92795BC8 /* GoogleSymbolUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				BDB44821FC52438CB0DEBAE66A7D5F4C /* FIRInstanceID.h */,
-				B57EF740071652B593A0B5879C6BF277 /* Frameworks */,
+				14D0DA3BAC784BC24B829EACA4ED2B99 /* Frameworks */,
 			);
-			path = FirebaseInstanceID;
-			sourceTree = "<group>";
-		};
-		0822A105C0BD2763D5448CA12343F242 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E779035BF4C9E3C830FF204F8653A1F3 /* Info.plist */,
-				8462C7BE3F4A71551BCA39C8953F8C3C /* Mixpanel-swift.modulemap */,
-				ABD15FBA37AD1B03DDDF68A52C7A5F18 /* Mixpanel-swift.xcconfig */,
-				67322A2F7764B81F7CAC43BADC0DCA36 /* Mixpanel-swift-dummy.m */,
-				67AB33EEA935FF8AC2C3263A91EAC620 /* Mixpanel-swift-prefix.pch */,
-				55C73AB1CDEEA92156FE5134AC98C343 /* Mixpanel-swift-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Mixpanel-swift";
+			path = GoogleSymbolUtilities;
 			sourceTree = "<group>";
 		};
 		1391ADFACA0D39EF552975F4FA74B244 /* Pods-SpiderAttackTests */ = {
@@ -169,62 +97,36 @@
 			path = "Target Support Files/Pods-SpiderAttackTests";
 			sourceTree = "<group>";
 		};
-		14C53F0A7C275F4BCB93D8598BEA9AF2 /* Google-Mobile-Ads-SDK */ = {
+		14D0DA3BAC784BC24B829EACA4ED2B99 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1F80D958165964F3A3E9912D0C38861A /* Frameworks */,
+				AE02BCEFF657481CF3791D23CA47211D /* GoogleSymbolUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24A7BEF5A7F1EB9EC280B938781B2569 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				392860EB6E36ABA79E99E6174CEE5902 /* GoogleUtilities.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		37642F2CAEF0F78E8EC9D888A1F6DD3E /* Google-Mobile-Ads-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				FB57368071E90464BB4CD0EECB06EAEB /* Frameworks */,
 			);
 			path = "Google-Mobile-Ads-SDK";
 			sourceTree = "<group>";
 		};
-		190F0FAC76A267978EC718ED6753BF17 /* FirebaseAnalytics */ = {
+		3B976B3DC8C97531E10D73DDCEB468F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				35016DB673B87058B41FF42887B67E27 /* Frameworks */,
-			);
-			path = FirebaseAnalytics;
-			sourceTree = "<group>";
-		};
-		1F80D958165964F3A3E9912D0C38861A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B5928FDF0CF787D5E0EB8FE681F208E9 /* GoogleMobileAds.framework */,
+				3902DB50170FC80715C7011953174C96 /* GoogleInterchangeUtilities.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		20AC7C3F3967DE21A1E1B6D8BC2BF582 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A522236F3828F9AB4E1B9440BAF87E42 /* Mixpanel.framework */,
-				4587DB6C01BB4628C72A7DD62A05FF99 /* Pods_SpiderAttack.framework */,
-				708178001D021E29FAB304CB3E980740 /* Pods_SpiderAttackTests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		21F6E01DB938ED68E54BC09BDC2809B0 /* Analytics */ = {
-			isa = PBXGroup;
-			children = (
-				9B4EB9F8DDE7C3F77DCCE89B102D6FFE /* Firebase.h */,
-			);
-			name = Analytics;
-			sourceTree = "<group>";
-		};
-		35016DB673B87058B41FF42887B67E27 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C9E34E4C80F01165673AC3073913D4C2 /* FirebaseAnalytics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3A5910D793ABB0543CF440DA594F8BBD /* GoogleUtilities */ = {
-			isa = PBXGroup;
-			children = (
-				ACED3FC0383E79D38AF03D7B3977460C /* Frameworks */,
-			);
-			path = GoogleUtilities;
 			sourceTree = "<group>";
 		};
 		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
@@ -253,12 +155,28 @@
 			path = "Target Support Files/Pods-SpiderAttack";
 			sourceTree = "<group>";
 		};
-		59D3A666612D1713CCDD0F1993B04806 /* GoogleSymbolUtilities */ = {
+		52C11D4CE40B641F1CCC6184D9CBD9C8 /* GoogleUtilities */ = {
 			isa = PBXGroup;
 			children = (
-				A7770EECD13939F01E54F8CEE5F4969B /* Frameworks */,
+				24A7BEF5A7F1EB9EC280B938781B2569 /* Frameworks */,
 			);
-			path = GoogleSymbolUtilities;
+			path = GoogleUtilities;
+			sourceTree = "<group>";
+		};
+		6B701948D42463BA8542D1AE5E88B280 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57A94EC1469FAAD37A678C560D15ABAF /* FirebaseInstanceID.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BC1E2DFACF0093C42AA20142867DD06 /* GoogleInterchangeUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				3B976B3DC8C97531E10D73DDCEB468F5 /* Frameworks */,
+			);
+			path = GoogleInterchangeUtilities;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -266,50 +184,50 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E7CE93647157AFE7F898AB424204A635 /* Pods */,
-				20AC7C3F3967DE21A1E1B6D8BC2BF582 /* Products */,
+				AA535FE3140D0E2CD347365543C97096 /* Pods */,
+				E900198C304E74DF745CD1A79A811B14 /* Products */,
 				CE5473CA4F66A73774351937436C3116 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		9A0A2B1650A17EAA1A6983AA38171F06 /* Firebase */ = {
+		894F28FB4862BD461C519D35F4BCFC7F /* FirebaseInstanceID */ = {
 			isa = PBXGroup;
 			children = (
-				21F6E01DB938ED68E54BC09BDC2809B0 /* Analytics */,
+				5FCE1C40675C680206DC25A235B77F7B /* FIRInstanceID.h */,
+				6B701948D42463BA8542D1AE5E88B280 /* Frameworks */,
 			);
-			path = Firebase;
+			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
-		A7770EECD13939F01E54F8CEE5F4969B /* Frameworks */ = {
+		9596002AA7AB54FA2462459045EA7AAF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A8299FB9F4C97D377D3BBA33F324FA88 /* GoogleSymbolUtilities.framework */,
+				DAD65CAFE5F43CE68F273A7614E7630C /* FirebaseAnalytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		AC7E1AA0CF4EC5636762CB4B73577F7D /* GoogleInterchangeUtilities */ = {
+		97C87CC65B334F783ED2D198F9875D67 /* FirebaseAnalytics */ = {
 			isa = PBXGroup;
 			children = (
-				EABD43FA1AD33D922942A7B4C9F38E71 /* Frameworks */,
+				9596002AA7AB54FA2462459045EA7AAF /* Frameworks */,
 			);
-			path = GoogleInterchangeUtilities;
+			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
-		ACED3FC0383E79D38AF03D7B3977460C /* Frameworks */ = {
+		AA535FE3140D0E2CD347365543C97096 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A7E0AB5F1BCBA0C287EE254F8222F1B7 /* GoogleUtilities.framework */,
+				FABC0F57BEFF25E3F3763C9304532A1A /* Firebase */,
+				97C87CC65B334F783ED2D198F9875D67 /* FirebaseAnalytics */,
+				BF73A17757FA7DE7A2C85CD3708C00AF /* FirebaseCore */,
+				894F28FB4862BD461C519D35F4BCFC7F /* FirebaseInstanceID */,
+				37642F2CAEF0F78E8EC9D888A1F6DD3E /* Google-Mobile-Ads-SDK */,
+				6BC1E2DFACF0093C42AA20142867DD06 /* GoogleInterchangeUtilities */,
+				0B9176D8F8FF4A50313A4AAB92795BC8 /* GoogleSymbolUtilities */,
+				52C11D4CE40B641F1CCC6184D9CBD9C8 /* GoogleUtilities */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B57EF740071652B593A0B5879C6BF277 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A5DF83B075FB34FB97C9B11C0F7AF397 /* FirebaseInstanceID.framework */,
-			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -318,6 +236,14 @@
 				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF73A17757FA7DE7A2C85CD3708C00AF /* FirebaseCore */ = {
+			isa = PBXGroup;
+			children = (
+				F94828C458CDFCB2D49F8BBD62461B88 /* Frameworks */,
+			);
+			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
 		CE5473CA4F66A73774351937436C3116 /* Targets Support Files */ = {
@@ -329,50 +255,45 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		E7CE93647157AFE7F898AB424204A635 /* Pods */ = {
+		E4EA4916CD8C135C2196CFB2B9F2210B /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				9A0A2B1650A17EAA1A6983AA38171F06 /* Firebase */,
-				190F0FAC76A267978EC718ED6753BF17 /* FirebaseAnalytics */,
-				062E188C327C28212529BB8F5D46D504 /* FirebaseInstanceID */,
-				14C53F0A7C275F4BCB93D8598BEA9AF2 /* Google-Mobile-Ads-SDK */,
-				AC7E1AA0CF4EC5636762CB4B73577F7D /* GoogleInterchangeUtilities */,
-				59D3A666612D1713CCDD0F1993B04806 /* GoogleSymbolUtilities */,
-				3A5910D793ABB0543CF440DA594F8BBD /* GoogleUtilities */,
-				EED0CB5DA2F4C9979E2741176250D764 /* Mixpanel-swift */,
+				489E561A7F3F2CF71F56A5C4F0A53CC0 /* Firebase.h */,
 			);
-			name = Pods;
+			name = Core;
 			sourceTree = "<group>";
 		};
-		EABD43FA1AD33D922942A7B4C9F38E71 /* Frameworks */ = {
+		E900198C304E74DF745CD1A79A811B14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3839CD99AF37806B1EB6312F547BA236 /* GoogleInterchangeUtilities.framework */,
+				694A00359C8642FC8820DEAFB29C3328 /* Pods_SpiderAttack.framework */,
+				249A92EF10B1333AA57CA6868A723CD2 /* Pods_SpiderAttackTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F94828C458CDFCB2D49F8BBD62461B88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A2997E4115F731CDE3CF8400DF06CC71 /* FirebaseCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EED0CB5DA2F4C9979E2741176250D764 /* Mixpanel-swift */ = {
+		FABC0F57BEFF25E3F3763C9304532A1A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				6CA36FCDF26A02B59A3C0E2A2D0C7BF0 /* AutomaticProperties.swift */,
-				5F4B239CA89688700E1A6C9C3BD092BC /* Constants.swift */,
-				9D77127CC1FC3E35F28EC7AD22FA929A /* Error.swift */,
-				76285B5823394C4289F62DDABEB5EC50 /* FileLogging.swift */,
-				CA3546EC4ACE1BBC6AB01C15C1D39EF5 /* Flush.swift */,
-				0BF117555B07E8D0E67B7E4CDE477DB1 /* FlushRequest.swift */,
-				74FF91C40C47A53F41534EC24A630898 /* JSONHandler.swift */,
-				CE5AD865050D057A1895F7C1C7251129 /* Logger.swift */,
-				3C0EB7468F716965C775BF09FFFEDE12 /* Mixpanel.swift */,
-				BF8F73D73C2C0E782AFC6F4380EBF43D /* MixpanelInstance.swift */,
-				809B798F844B8E16FED0B7DACF526144 /* Network.swift */,
-				B61A8F67536671745666E70B9D10E95B /* People.swift */,
-				2A7AD02956A056C0B51C8922A4B2CDCF /* Persistence.swift */,
-				3812FCF481F8A67F6B777CCD51A520FC /* PrintLogging.swift */,
-				5D58AB6A5631AB99C4ED08A09EB0C2B6 /* Track.swift */,
-				0822A105C0BD2763D5448CA12343F242 /* Support Files */,
+				E4EA4916CD8C135C2196CFB2B9F2210B /* Core */,
 			);
-			path = "Mixpanel-swift";
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		FB57368071E90464BB4CD0EECB06EAEB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				121949731ABFFF9EB3988D786D6E11F2 /* GoogleMobileAds.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,40 +307,32 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		66DDD67F3A436B42C30DB9E61B62D605 /* Headers */ = {
+		C1876A678D610C9C20C079232F17C7A0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF5BC4299F004872580297A4057FFCB2 /* Pods-SpiderAttack-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A95284E33190B292CFA3D8E5BF0D37D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA96B65256A388918B7B486C890AB396 /* Mixpanel-swift-umbrella.h in Headers */,
+				32D0A256816185C35B26C6A2A1B8697F /* Pods-SpiderAttack-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		33A15922D9CFBB1ED72A42B512587636 /* Mixpanel-swift */ = {
+		3A23CFB4FFB14EC21BA3A9DEC77559E3 /* Pods-SpiderAttack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 151B292451CE51CA17267C2A450AB68F /* Build configuration list for PBXNativeTarget "Mixpanel-swift" */;
+			buildConfigurationList = 9E58E879A066700F170A6598A08EEBEB /* Build configuration list for PBXNativeTarget "Pods-SpiderAttack" */;
 			buildPhases = (
-				01B99B20C7814DFF8BF174EE4C51D9C0 /* Sources */,
-				B93CA1BA0FF57066B91E814BEBB2E2DA /* Frameworks */,
-				8A95284E33190B292CFA3D8E5BF0D37D /* Headers */,
+				D261608D63BCE66A5B546FAFB178B67A /* Sources */,
+				D0AAA9A6747AB5E6AF3477A6D2922FB4 /* Frameworks */,
+				C1876A678D610C9C20C079232F17C7A0 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Mixpanel-swift";
-			productName = "Mixpanel-swift";
-			productReference = A522236F3828F9AB4E1B9440BAF87E42 /* Mixpanel.framework */;
+			name = "Pods-SpiderAttack";
+			productName = "Pods-SpiderAttack";
+			productReference = 694A00359C8642FC8820DEAFB29C3328 /* Pods_SpiderAttack.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C5792F4FA03BC7107B869588FEB430E0 /* Pods-SpiderAttackTests */ = {
@@ -436,25 +349,7 @@
 			);
 			name = "Pods-SpiderAttackTests";
 			productName = "Pods-SpiderAttackTests";
-			productReference = 708178001D021E29FAB304CB3E980740 /* Pods_SpiderAttackTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		F36F96FF328DC90BEA83690183E62869 /* Pods-SpiderAttack */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 28248ABBCC4B4D2C4765C6550879E92D /* Build configuration list for PBXNativeTarget "Pods-SpiderAttack" */;
-			buildPhases = (
-				29724C9C81FF59897FF5AADF1BD87610 /* Sources */,
-				6D4690520570BDFC20BDC3855AFF65DA /* Frameworks */,
-				66DDD67F3A436B42C30DB9E61B62D605 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2623BB01B1B86B1F08F6AA382D02C7AE /* PBXTargetDependency */,
-			);
-			name = "Pods-SpiderAttack";
-			productName = "Pods-SpiderAttack";
-			productReference = 4587DB6C01BB4628C72A7DD62A05FF99 /* Pods_SpiderAttack.framework */;
+			productReference = 249A92EF10B1333AA57CA6868A723CD2 /* Pods_SpiderAttackTests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -474,49 +369,17 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 20AC7C3F3967DE21A1E1B6D8BC2BF582 /* Products */;
+			productRefGroup = E900198C304E74DF745CD1A79A811B14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				33A15922D9CFBB1ED72A42B512587636 /* Mixpanel-swift */,
-				F36F96FF328DC90BEA83690183E62869 /* Pods-SpiderAttack */,
+				3A23CFB4FFB14EC21BA3A9DEC77559E3 /* Pods-SpiderAttack */,
 				C5792F4FA03BC7107B869588FEB430E0 /* Pods-SpiderAttackTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		01B99B20C7814DFF8BF174EE4C51D9C0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9A1CBCB42F13C83C43D6D6F295F29E34 /* AutomaticProperties.swift in Sources */,
-				FE5C6605142A4E95CFA762B8802B6527 /* Constants.swift in Sources */,
-				B59932658A059A1230E215F470082F22 /* Error.swift in Sources */,
-				66C9395478322B1DBB95099C325EB654 /* FileLogging.swift in Sources */,
-				A7A7B2ED6E22B4C4357EAAF3A1F633D1 /* Flush.swift in Sources */,
-				7C0C1424FD9B5E3CFEFBD2EDCB12627F /* FlushRequest.swift in Sources */,
-				A82FE0B23787C057E6DB45063744B38C /* JSONHandler.swift in Sources */,
-				262F8582DE4718DCAF48A6CE3CA02C19 /* Logger.swift in Sources */,
-				849B307259278A3A3A06601773D12F67 /* Mixpanel-swift-dummy.m in Sources */,
-				B68EF510EF521B6A02F8772BA736FE26 /* Mixpanel.swift in Sources */,
-				48E185C0F97C44550E32D81C31EFB021 /* MixpanelInstance.swift in Sources */,
-				CFD0A409E8F4B9798CFA72EAEC24521F /* Network.swift in Sources */,
-				D328D1B393ECD2284976EBFC51ECBC6B /* People.swift in Sources */,
-				B745E7DD1FCDD4947D1D2844FB23681A /* Persistence.swift in Sources */,
-				3BC21B77C6B310E015BD51732EA3BB20 /* PrintLogging.swift in Sources */,
-				60BEAF680DE64CF2DBE5A6CCD7CAE0F9 /* Track.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		29724C9C81FF59897FF5AADF1BD87610 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				55F936BC8D36612AA20665F9CAE04663 /* Pods-SpiderAttack-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3B455FC7BC5B47ABB3968CF6E2703C32 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -525,19 +388,192 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D261608D63BCE66A5B546FAFB178B67A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75F24D74411A7682997D9AAB13D268F0 /* Pods-SpiderAttack-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		2623BB01B1B86B1F08F6AA382D02C7AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Mixpanel-swift";
-			target = 33A15922D9CFBB1ED72A42B512587636 /* Mixpanel-swift */;
-			targetProxy = E517999681DB1696D739758B2ED4D545 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		034014829C1E4434983CF3A690C12017 /* Debug */ = {
+		2FDCC2451D8D90338E11B2733D9F0F55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 204D402751C15019110C3C68E54CD036 /* Pods-SpiderAttackTests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttackTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttackTests/Pods-SpiderAttackTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpiderAttackTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3B5FA7E4797856EFB28C8ADB54399480 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0F3854F5A05D93BFBB2DFDDB0B3C047 /* Pods-SpiderAttack.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttack/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttack/Pods-SpiderAttack.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpiderAttack;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		42287DDF97330524BA3EF220F0276DA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		74D8D663A84336C4EAA14A02A699F735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1FDC075E506D375EE4126F959D360AE9 /* Pods-SpiderAttackTests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttackTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttackTests/Pods-SpiderAttackTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpiderAttackTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9F3E72020B3F8EAB8BB0FB3F77AA53D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0937EC8DEDD725AC6802A6F6E8A57B7 /* Pods-SpiderAttack.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttack/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttack/Pods-SpiderAttack.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpiderAttack;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AE9439C22469D35336242DD983DB5C5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -572,269 +608,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		2DB689998988BA07E67B7180BE0AD521 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABD15FBA37AD1B03DDDF68A52C7A5F18 /* Mixpanel-swift.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Mixpanel-swift/Mixpanel-swift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Mixpanel-swift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Mixpanel-swift/Mixpanel-swift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Mixpanel;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		86D6B73CEC62D773BCA5ACB97153934B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1FDC075E506D375EE4126F959D360AE9 /* Pods-SpiderAttackTests.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttackTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttackTests/Pods-SpiderAttackTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SpiderAttackTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B79D2E30723840095425341C8844D9EB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 204D402751C15019110C3C68E54CD036 /* Pods-SpiderAttackTests.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttackTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttackTests/Pods-SpiderAttackTests.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SpiderAttackTests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BE0670926A509D4B8F31B20B49AFC9F2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ABD15FBA37AD1B03DDDF68A52C7A5F18 /* Mixpanel-swift.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Mixpanel-swift/Mixpanel-swift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Mixpanel-swift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Mixpanel-swift/Mixpanel-swift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Mixpanel;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C7E474A03CAE21F1CB6046E7344C59BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E4C043EDC64C0C663F43B2D20DAF50E9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0F3854F5A05D93BFBB2DFDDB0B3C047 /* Pods-SpiderAttack.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttack/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttack/Pods-SpiderAttack.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SpiderAttack;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		E857BD9625F005F13F35C0E5C42A60E8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0937EC8DEDD725AC6802A6F6E8A57B7 /* Pods-SpiderAttack.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SpiderAttack/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SpiderAttack/Pods-SpiderAttack.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SpiderAttack;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		151B292451CE51CA17267C2A450AB68F /* Build configuration list for PBXNativeTarget "Mixpanel-swift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2DB689998988BA07E67B7180BE0AD521 /* Debug */,
-				BE0670926A509D4B8F31B20B49AFC9F2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		28248ABBCC4B4D2C4765C6550879E92D /* Build configuration list for PBXNativeTarget "Pods-SpiderAttack" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E857BD9625F005F13F35C0E5C42A60E8 /* Debug */,
-				E4C043EDC64C0C663F43B2D20DAF50E9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				034014829C1E4434983CF3A690C12017 /* Debug */,
-				C7E474A03CAE21F1CB6046E7344C59BD /* Release */,
+				AE9439C22469D35336242DD983DB5C5F /* Debug */,
+				42287DDF97330524BA3EF220F0276DA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -842,8 +630,17 @@
 		89B78EB3C1AA951CDE674B4D6956DC29 /* Build configuration list for PBXNativeTarget "Pods-SpiderAttackTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				86D6B73CEC62D773BCA5ACB97153934B /* Debug */,
-				B79D2E30723840095425341C8844D9EB /* Release */,
+				74D8D663A84336C4EAA14A02A699F735 /* Debug */,
+				2FDCC2451D8D90338E11B2733D9F0F55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9E58E879A066700F170A6598A08EEBEB /* Build configuration list for PBXNativeTarget "Pods-SpiderAttack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F3E72020B3F8EAB8BB0FB3F77AA53D4 /* Debug */,
+				3B5FA7E4797856EFB28C8ADB54399480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

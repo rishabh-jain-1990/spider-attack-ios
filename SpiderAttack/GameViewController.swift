@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 import AVFoundation
-import Mixpanel
+//import Mixpanel
 import GoogleMobileAds
 import GameKit
 
@@ -37,10 +37,10 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
     
     var scene : GameScene!
     var gameState = GameState.NotStarted
-    var scoreTimer : NSTimer!
+    var scoreTimer : Timer!
     var timeElapsed = 0
     
-    let defaults = NSUserDefaults.standardUserDefaults()
+    let defaults = UserDefaults.standard
     
     var bgSoundPlayer = AVPlayer()
     var gameOverSoundPlayer = AVPlayer()
@@ -49,38 +49,38 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Mixpanel.initialize(token: MIXPANEL_TOKEN)
+        //Mixpanel.initialize(token: MIXPANEL_TOKEN)
         
         //        GPGManager.sharedInstance().statusDelegate = self
         //        GIDSignIn.sharedInstance().uiDelegate = self
         
         //        GPGManager.sharedInstance().signInWithClientID(GAMES_SERVICES_CLIENT_ID, silently: true);
         
-        var alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("sound_bg_short", ofType: "mp3")!)
-        var playerItem = AVPlayerItem( URL:alertSound )
+        var alertSound = URL(fileURLWithPath: Bundle.main.path(forResource: "sound_bg_short", ofType: "mp3")!)
+        var playerItem = AVPlayerItem( url:alertSound )
         bgSoundPlayer = AVPlayer(playerItem:playerItem)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(playBackgroundSound), name: AVPlayerItemDidPlayToEndTimeNotification, object: playerItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(playBackgroundSound), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
         
-        alertSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("chew", ofType: "mp3")!)
-        playerItem = AVPlayerItem( URL:alertSound )
+        alertSound = URL(fileURLWithPath: Bundle.main.path(forResource: "chew", ofType: "mp3")!)
+        playerItem = AVPlayerItem( url:alertSound )
         gameOverSoundPlayer = AVPlayer(playerItem:playerItem)
         
-        rightArrow.addTarget(self, action: #selector(moveRight), forControlEvents: .TouchDown)
+        rightArrow.addTarget(self, action: #selector(moveRight), for: .touchDown)
         
-        rightArrow.addTarget(self, action: #selector(stopMovingRight), forControlEvents: [.TouchUpOutside, .TouchUpInside])
+        rightArrow.addTarget(self, action: #selector(stopMovingRight), for: [.touchUpOutside, .touchUpInside])
         
-        leftArrow.addTarget(self, action: #selector(moveLeft), forControlEvents: .TouchDown)
+        leftArrow.addTarget(self, action: #selector(moveLeft), for: .touchDown)
         
-        leftArrow.addTarget(self, action: #selector(stopMovingLeft), forControlEvents: [.TouchUpOutside, .TouchUpInside])
+        leftArrow.addTarget(self, action: #selector(stopMovingLeft), for: [.touchUpOutside, .touchUpInside])
         
-        leaderboardImageButton.addTarget(self, action: #selector(showLeaderboard), forControlEvents: .TouchDown)
-        leaderboardTextButton.addTarget(self, action: #selector(showLeaderboard), forControlEvents: .TouchDown)
+        leaderboardImageButton.addTarget(self, action: #selector(showLeaderboard), for: .touchDown)
+        leaderboardTextButton.addTarget(self, action: #selector(showLeaderboard), for: .touchDown)
         
-        shareTextButton.addTarget(self, action: #selector(shareGame), forControlEvents: .TouchDown)
-        shareImageButton.addTarget(self, action: #selector(shareGame), forControlEvents: .TouchDown)
+        shareTextButton.addTarget(self, action: #selector(shareGame), for: .touchDown)
+        shareImageButton.addTarget(self, action: #selector(shareGame), for: .touchDown)
         
-        rateImageButton.addTarget(self, action: #selector(rateGame), forControlEvents: .TouchDown)
-        rateTextButton.addTarget(self, action: #selector(rateGame), forControlEvents: .TouchDown)
+        rateImageButton.addTarget(self, action: #selector(rateGame), for: .touchDown)
+        rateTextButton.addTarget(self, action: #selector(rateGame), for: .touchDown)
         
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         leaderboardImageButton.layer.cornerRadius = 0.5 * leaderboardImageButton.bounds.size.width
@@ -88,16 +88,16 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         rateImageButton.layer.cornerRadius = 0.5 * rateImageButton.bounds.size.width
         muteImageButton.layer.cornerRadius = 0.5 * muteImageButton.bounds.size.width
         
-        muteImageButton.setImage(UIImage(named: defaults.boolForKey(IS_MUTE_KEY) ? "mute_icon.png" : "unmute_icon.png"), forState: UIControlState.Normal)
-        muteTextButton.setTitle(defaults.boolForKey(IS_MUTE_KEY) ? "Sound Off" : "Sound On", forState: UIControlState.Normal)
+        muteImageButton.setImage(UIImage(named: defaults.bool(forKey: IS_MUTE_KEY) ? "mute_icon.png" : "unmute_icon.png"), for: UIControlState())
+        muteTextButton.setTitle(defaults.bool(forKey: IS_MUTE_KEY) ? "Sound Off" : "Sound On", for: UIControlState())
         
-        scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+        scoreTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         
         adView.adUnitID = LIVE_AD_UNIT_ID
         adView.rootViewController = self
-        adView.loadRequest(GADRequest())
+        adView.load(GADRequest())
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pauseGameScene), name:"Pause", object:nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pauseGameScene), name:NSNotification.Name(rawValue: "Pause"), object:nil)
         
         self.authenticateLocalPlayer()
     }
@@ -108,7 +108,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             // Configure the view.
             let skView = gameView as GameView
             
-            let size = CGSize(width: skView.bounds.size.width, height: skView.bounds.size.height - ((UIDevice.currentDevice().userInterfaceIdiom == .Phone ? 4 : 2) * leftArrow.bounds.size.height))
+            let size = CGSize(width: skView.bounds.size.width, height: skView.bounds.size.height - ((UIDevice.current.userInterfaceIdiom == .phone ? 4 : 2) * leftArrow.bounds.size.height))
             scene = GameScene(size: size, gameResultDelegate: self)
             skView.allowsTransparency = true
             skView.showsFPS = true
@@ -124,19 +124,19 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             
             //        scene.size = skView.bounds.size
             skView.presentScene(scene)
-            skView.frameInterval = 2
+//            skView.frameInterval = 2
         }
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
-            return .AllButUpsideDown
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .allButUpsideDown
         } else {
-            return .All
+            return .all
         }
     }
     
@@ -145,7 +145,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         // Release any cached data, images, etc that aren't in use.
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -200,19 +200,19 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         if scene != nil
         {
             scene.pause()
-            scoreboardView.hidden = false
-            adView.hidden = false
+            scoreboardView.isHidden = false
+            adView.isHidden = false
             gameOverLabel.text = "Game Paused"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
             
-            if(defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed)
+            if(defaults.integer(forKey: HIGHSCORE_KEY) < timeElapsed)
             {
-                defaults.setInteger(timeElapsed, forKey: HIGHSCORE_KEY)
+                defaults.set(timeElapsed, forKey: HIGHSCORE_KEY)
                 defaults.synchronize()
             }
             
-            highScoreLabel.text = String(format: "High Score-  %02d : %02d", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
-            playButton.setImage(UIImage(named: "play.png"), forState: UIControlState.Normal)
+            highScoreLabel.text = String(format: "High Score-  %02d : %02d", arguments:[defaults.integer(forKey: HIGHSCORE_KEY) / 60, defaults.integer(forKey: HIGHSCORE_KEY) % 60])
+            playButton.setImage(UIImage(named: "play.png"), for: UIControlState())
         }
         
         scoreTimer.invalidate()
@@ -223,29 +223,29 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         gameState = GameState.Over
         bgSoundPlayer.pause()
         
-        if !defaults.boolForKey(IS_MUTE_KEY)
+        if !defaults.bool(forKey: IS_MUTE_KEY)
         {
-            gameOverSoundPlayer.seekToTime(kCMTimeZero)
+            gameOverSoundPlayer.seek(to: kCMTimeZero)
             gameOverSoundPlayer.play()
         }
         
         if(scene != nil)
         {
             scene.pause()
-            scoreboardView.hidden = false
-            adView.hidden = false
+            scoreboardView.isHidden = false
+            adView.isHidden = false
             currentScoreLabel.text = "Game Over"
             currentScoreLabel.text = String(format: "Current Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
-            if(defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed)
+            if(defaults.integer(forKey: HIGHSCORE_KEY) < timeElapsed)
             {
-                defaults.setInteger(timeElapsed, forKey: HIGHSCORE_KEY)
+                defaults.set(timeElapsed, forKey: HIGHSCORE_KEY)
                 defaults.synchronize()
             }
             
             let sScore = GKScore(leaderboardIdentifier: gcDefaultLeaderBoard)
             sScore.value = Int64(timeElapsed)
             
-            GKScore.reportScores([sScore], withCompletionHandler: { (error: NSError?) -> Void in
+            GKScore.report([sScore], withCompletionHandler: { (error: Error?) -> Void in
                 if error != nil {
                     print(error!.localizedDescription)
                 } else {
@@ -254,30 +254,29 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
                 }
             })
             
-            highScoreLabel.text = String(format: "High Score-  %02d : %02d", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
+            highScoreLabel.text = String(format: "High Score-  %02d : %02d", arguments:[defaults.integer(forKey: HIGHSCORE_KEY) / 60, defaults.integer(forKey: HIGHSCORE_KEY) % 60])
             
-            playButton.setImage(UIImage(named: "replay.png"), forState: UIControlState.Normal)
+            playButton.setImage(UIImage(named: "replay.png"), for: UIControlState())
         }
         
-        Mixpanel.mainInstance().track(event: "Score",
-                                      properties: ["Current Score" : timeElapsed])
+        //Mixpanel.mainInstance().track(event: "Score", properties: ["Current Score" : timeElapsed])
         scoreTimer.invalidate()
     }
     
     func playBackgroundSound()
     {
-        performSelector(#selector(
-            playSound), withObject: nil, afterDelay: Double(arc4random_uniform(4) + 2))
+        perform(#selector(
+            playSound), with: nil, afterDelay: Double(arc4random_uniform(4) + 2))
     }
     
     func playSound()
     {
-        if gameState != GameState.Resumed || defaults.boolForKey(IS_MUTE_KEY)
+        if gameState != GameState.Resumed || defaults.bool(forKey: IS_MUTE_KEY)
         {
             return
         }
         
-        bgSoundPlayer.seekToTime(kCMTimeZero)
+        bgSoundPlayer.seek(to: kCMTimeZero)
         bgSoundPlayer.play()
     }
     
@@ -289,48 +288,49 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             
             let gcVC: GKGameCenterViewController = GKGameCenterViewController()
             gcVC.gameCenterDelegate = self
-            gcVC.viewState = GKGameCenterViewControllerState.Leaderboards
+            gcVC.viewState = GKGameCenterViewControllerState.leaderboards
             gcVC.leaderboardIdentifier = gcDefaultLeaderBoard
-            self.presentViewController(gcVC, animated: true, completion: nil)
+            self.present(gcVC, animated: true, completion: nil)
         }else{
             let dialog = UIAlertController(title: "Error",
                                            message: "Please sign in to view the loeaderboard",
-                                           preferredStyle: UIAlertControllerStyle.Alert)
+                                           preferredStyle: UIAlertControllerStyle.alert)
             // Present the dialog.
-            presentViewController(dialog,
+            present(dialog,
                                   animated: false,
                                   completion: nil)
             
             let delay = 2.0 * Double(NSEC_PER_SEC)
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-            dispatch_after(time, dispatch_get_main_queue(), {
-                dialog.dismissViewControllerAnimated(true, completion: nil)
+            let time = DispatchTime.now() + Double(Int64(delay)) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: time, execute: {
+                dialog.dismiss(animated: true, completion: nil)
             })
         }
     }
     
-    func shareGame(sourceView: UIView)
+    func shareGame(_ sourceView: UIView)
     {
-        if defaults.integerForKey(HIGHSCORE_KEY) < timeElapsed
+        if defaults.integer(forKey: HIGHSCORE_KEY) < timeElapsed
         {
-            defaults.setInteger(timeElapsed, forKey: HIGHSCORE_KEY)
+            defaults.set(timeElapsed, forKey: HIGHSCORE_KEY)
             defaults.synchronize()
         }
         
-        let shareText = String(format: "Try and beat my high score of %02d : %02d at Spider Attack https://goo.gl/bOhbH3", arguments:[defaults.integerForKey(HIGHSCORE_KEY) / 60, defaults.integerForKey(HIGHSCORE_KEY) % 60])
+        let shareText = String(format: "Try and beat my high score of %02d : %02d at Spider Attack https://goo.gl/bOhbH3", arguments:[defaults.integer(forKey: HIGHSCORE_KEY) / 60, defaults.integer(forKey: HIGHSCORE_KEY) % 60])
         
         let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
         
         vc.popoverPresentationController?.sourceView = sourceView
         vc.popoverPresentationController?.sourceRect = sourceView.bounds
         
-        presentViewController(vc, animated: true, completion: nil)
+        present(vc, animated: true, completion: nil)
         
     }
     
     func rateGame()
     {
-        UIApplication.sharedApplication().openURL(NSURL(string : "itms-apps://itunes.apple.com/app/id1160146438")!)
+        
+        UIApplication.shared.open(NSURL(string:"itms-apps://itunes.apple.com/app/id1160146438") as! URL, options: [:], completionHandler: nil)
     }
     
     func authenticateLocalPlayer() {
@@ -339,13 +339,13 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
                 // 1 Show login if player is not logged in
-                self.presentViewController(ViewController!, animated: true, completion: nil)
-            } else if (localPlayer.authenticated) {
+                self.present(ViewController!, animated: true, completion: nil)
+            } else if (localPlayer.isAuthenticated) {
                 // 2 Player is already euthenticated & logged in, load game center
                 self.gcEnabled = true
                 
                 // Get the default leaderboard ID
-                localPlayer.loadDefaultLeaderboardIdentifierWithCompletionHandler({ (leaderboardIdentifer: String?, error: NSError?) -> Void in
+                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer: String?, error: Error?) -> Void in
                     if error != nil {
                         print(error)
                     } else {
@@ -365,15 +365,15 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         
     }
     
-    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func pauseGame(sender: UITapGestureRecognizer) {
+    @IBAction func pauseGame(_ sender: UITapGestureRecognizer) {
         pauseGameScene()
     }
     
-    @IBAction func playButtonPressed(sender: AnyObject) {
+    @IBAction func playButtonPressed(_ sender: AnyObject) {
         switch gameState
         {
         case GameState.NotStarted:
@@ -382,12 +382,12 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             if(scene != nil)
             {
                 scene.unpause()
-                scoreboardView.hidden = true
-                adView.hidden = true
+                scoreboardView.isHidden = true
+                adView.isHidden = true
             }
             
             playBackgroundSound()
-            scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+            scoreTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         case GameState.Paused:
             // TODO: Start countdown
             gameState = GameState.Resumed
@@ -395,26 +395,26 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             if(scene != nil)
             {
                 scene.unpause()
-                scoreboardView.hidden = true
-                adView.hidden = true
+                scoreboardView.isHidden = true
+                adView.isHidden = true
             }
             
             playBackgroundSound()
-            scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+            scoreTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         case GameState.Over:
             gameState = GameState.Resumed
             
             if(scene != nil)
             {
                 scene.reset()
-                scoreboardView.hidden = true
-                adView.hidden = true
+                scoreboardView.isHidden = true
+                adView.isHidden = true
             }
             
             timeElapsed = 0
             playBackgroundSound()
             scoreLabel.text = String(format: "Score-  %02d : %02d", arguments:[timeElapsed / 60, timeElapsed % 60])
-            scoreTimer = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+            scoreTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         case GameState.Resumed:
             break
         default:
@@ -422,10 +422,10 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         }
     }
     
-    @IBAction func muteButtonPressed(sender: AnyObject) {
-        let isMute = !defaults.boolForKey(IS_MUTE_KEY)
-        defaults.setBool(isMute, forKey: IS_MUTE_KEY)
-        muteImageButton.setImage(UIImage(named: isMute ? "mute_icon.png" : "unmute_icon.png"), forState: UIControlState.Normal)
-        muteTextButton.setTitle(defaults.boolForKey(IS_MUTE_KEY) ? "Sound Off" : "Sound On", forState: UIControlState.Normal)
+    @IBAction func muteButtonPressed(_ sender: AnyObject) {
+        let isMute = !defaults.bool(forKey: IS_MUTE_KEY)
+        defaults.set(isMute, forKey: IS_MUTE_KEY)
+        muteImageButton.setImage(UIImage(named: isMute ? "mute_icon.png" : "unmute_icon.png"), for: UIControlState())
+        muteTextButton.setTitle(defaults.bool(forKey: IS_MUTE_KEY) ? "Sound Off" : "Sound On", for: UIControlState())
     }
 }

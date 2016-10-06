@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Mixpanel-swift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-SpiderAttack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>33A15922D9CFBB1ED72A42B512587636</key>
+		<key>3A23CFB4FFB14EC21BA3A9DEC77559E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C5792F4FA03BC7107B869588FEB430E0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F36F96FF328DC90BEA83690183E62869</key>
 		<dict>
 			<key>primary</key>
 			<true/>

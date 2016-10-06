@@ -13,13 +13,13 @@ import SpriteKit
 class GameView : SKView
 {
     
-    override var paused : Bool {
+    override var isPaused : Bool {
         didSet {
-            if self.paused {
-                NSNotificationCenter.defaultCenter().postNotificationName("paused", object: nil, userInfo: nil)
+            if self.isPaused {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "paused"), object: nil, userInfo: nil)
             }
             else {
-                NSNotificationCenter.defaultCenter().postNotificationName("un-paused", object: nil, userInfo: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "un-paused"), object: nil, userInfo: nil)
             }
         }
         

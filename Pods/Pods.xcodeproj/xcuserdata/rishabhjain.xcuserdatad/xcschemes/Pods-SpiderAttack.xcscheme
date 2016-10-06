@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F36F96FF328DC90BEA83690183E62869"
+               BlueprintIdentifier = "3A23CFB4FFB14EC21BA3A9DEC77559E3"
                BuildableName = "Pods_SpiderAttack.framework"
                BlueprintName = "Pods-SpiderAttack"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F36F96FF328DC90BEA83690183E62869"
+            BlueprintIdentifier = "3A23CFB4FFB14EC21BA3A9DEC77559E3"
             BuildableName = "Pods_SpiderAttack.framework"
             BlueprintName = "Pods-SpiderAttack"
             ReferencedContainer = "container:Pods.xcodeproj">
