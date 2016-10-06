@@ -33,7 +33,7 @@ class Spider : SKSpriteNode
         curSpeed = minSpeed
         
         let texture = SKTexture(imageNamed: "spider_00000")
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
         let aspectRatio = size.width / size.height
         size = CGSize(width: width, height: width / aspectRatio)
@@ -78,42 +78,42 @@ class Spider : SKSpriteNode
         {
             downAction()
         }else{
-            performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown))
+            perform(#selector(downAction), with: nil, afterDelay: Double(countdown))
         }
         
-        performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
+        perform(#selector(changeImage), with: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
     }
     
     func upAction() {
         let revY = screenHeight - CGFloat(arc4random_uniform(UInt32(screenHeight / 2 - size.height))) - size.height / 2;
-        let duration = NSTimeInterval(revY / curSpeed)
-        let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: revY), duration: duration);
-        runAction(SKAction.sequence([actionRev, SKAction.runBlock(downAction)]))
+        let duration = TimeInterval(revY / curSpeed)
+        let actionRev = SKAction.move(to: CGPoint(x: position.x, y: revY), duration: duration);
+        run(SKAction.sequence([actionRev, SKAction.run(downAction)]))
         
-        let lineAction = SKAction.resizeToHeight(screenHeight - revY, duration: duration)
-        line.runAction(lineAction)
+        let lineAction = SKAction.resize(toHeight: screenHeight - revY, duration: duration)
+        line.run(lineAction)
         //        player.position.x = player.position.x - (spiderWidth / BEE_SPEED_DIVIDER)
     }
     
     func downAction() {
-        if(paused == true)
+        if(isPaused == true)
         {
             return
         }
         
-        hidden = false
-        let duration = NSTimeInterval(position.y / curSpeed)
-        let actionRev = SKAction.moveTo(CGPoint(x: position.x, y: size.height / 2), duration: duration);
-        SKAction.repeatActionForever(SKAction.sequence([SKAction.runBlock(changeImage), SKAction.waitForDuration(1)]))
-        runAction(SKAction.sequence([actionRev, SKAction.runBlock(upAction)]))
+        isHidden = false
+        let duration = TimeInterval(position.y / curSpeed)
+        let actionRev = SKAction.move(to: CGPoint(x: position.x, y: size.height / 2), duration: duration);
+        SKAction.repeatForever(SKAction.sequence([SKAction.run(changeImage), SKAction.wait(forDuration: 1)]))
+        run(SKAction.sequence([actionRev, SKAction.run(upAction)]))
         
-        let lineAction = SKAction.resizeToHeight(screenHeight - size.height / 2, duration: duration)
-        line.runAction(lineAction)
+        let lineAction = SKAction.resize(toHeight: screenHeight - size.height / 2, duration: duration)
+        line.run(lineAction)
     }
     
     func changeImage()
     {
-        if paused == true
+        if isPaused == true
         {
             return
         }
@@ -121,7 +121,7 @@ class Spider : SKSpriteNode
         //        {
         //        case MovementDirection.Up, MovementDirection.Down:
         texture = getNextImage()
-        performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
+        perform(#selector(changeImage), with: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
         //        }
     }
     
@@ -141,27 +141,32 @@ class Spider : SKSpriteNode
         return Spider.spiderImageArray[currentImageIndex]
     }
     
+    func getCurrentImage() -> SKTexture
+    {
+        return Spider.spiderImageArray[currentImageIndex]
+    }
+    
     func pause() {
-        paused = true
-        line.paused = true
+        isPaused = true
+        line.isPaused = true
     }
     
     func unpause() {
-        paused = false
-        line.paused = false
+        isPaused = false
+        line.isPaused = false
         
-        if hidden == true
+        if isHidden == true
         {
             if countdown > 4
             {
-                performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown - 2))
+                perform(#selector(downAction), with: nil, afterDelay: Double(countdown - 2))
             }
             else if countdown > 1
             {
-                performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown - 1))
+                perform(#selector(downAction), with: nil, afterDelay: Double(countdown - 1))
             }else
             {
-                performSelector(#selector(downAction), withObject: nil, afterDelay: Double(countdown))
+                perform(#selector(downAction), with: nil, afterDelay: Double(countdown))
             }
         }
         

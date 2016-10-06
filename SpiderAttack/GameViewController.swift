@@ -248,9 +248,6 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             GKScore.report([sScore], withCompletionHandler: { (error: Error?) -> Void in
                 if error != nil {
                     print(error!.localizedDescription)
-                } else {
-                    print("Score submitted")
-                    
                 }
             })
             

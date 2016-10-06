@@ -32,7 +32,7 @@ class Bee : SKSpriteNode
         self.spiderWidth = spiderWidth
         
         let texture = SKTexture(imageNamed: "bee_00000")
-        super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
         if Bee.beeImageArray.isEmpty
         {
@@ -71,10 +71,10 @@ class Bee : SKSpriteNode
         
         movementDirection = MovementDirection.Right
         removeAllActions()
-        let duration = NSTimeInterval((rightX - position.x) / ((spiderWidth / BEE_SPEED_DIVIDER) * FRAMES_PER_SECOND))
-        runAction(SKAction.moveToX(rightX, duration: duration))
+        let duration = TimeInterval((rightX - position.x) / ((spiderWidth / BEE_SPEED_DIVIDER) * FRAMES_PER_SECOND))
+        run(SKAction.moveTo(x: rightX, duration: duration))
         
-        performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
+        perform(#selector(changeImage), with: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
     }
     
     func stopMovingRight() {
@@ -89,10 +89,10 @@ class Bee : SKSpriteNode
     func moveLeft() {
         movementDirection = MovementDirection.Left
         removeAllActions()
-        let duration = NSTimeInterval((position.x - leftX) / ((spiderWidth / BEE_SPEED_DIVIDER) * FRAMES_PER_SECOND))
-        runAction(SKAction.moveToX(leftX, duration: duration))
+        let duration = TimeInterval((position.x - leftX) / ((spiderWidth / BEE_SPEED_DIVIDER) * FRAMES_PER_SECOND))
+        run(SKAction.moveTo(x: leftX, duration: duration))
         
-        performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
+        perform(#selector(changeImage), with: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
     }
     
     func stopMovingLeft() {
@@ -105,7 +105,7 @@ class Bee : SKSpriteNode
     
     func changeImage()
     {
-        if paused == true
+        if isPaused == true
         {
             return
         }
@@ -114,10 +114,10 @@ class Bee : SKSpriteNode
         {
         case MovementDirection.Right:
             texture = getNextImage()
-            performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
+            perform(#selector(changeImage), with: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
         case MovementDirection.Left:
             texture = getPreviousImage()
-            performSelector(#selector(changeImage), withObject: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
+            perform(#selector(changeImage), with: nil, afterDelay: Double(1/FRAMES_PER_SECOND))
         case MovementDirection.None: break
         default: break
         }
@@ -139,12 +139,17 @@ class Bee : SKSpriteNode
         return Bee.beeImageArray[currentImageIndex]
     }
     
+    func getCurrentImage() -> SKTexture
+    {
+        return Bee.beeImageArray[currentImageIndex]
+    }
+    
     func pause() {
-        paused = true
+        isPaused = true
     }
     
     func unpause() {
-        paused = false
+        isPaused = false
         changeImage()
     }
 }
