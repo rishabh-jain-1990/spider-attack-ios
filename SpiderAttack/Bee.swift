@@ -17,7 +17,9 @@ class Bee : SKSpriteNode
         static let Left: UInt32 = 0b10      // 2
     }
     
-    private static var beeImageArray = [SKTexture]()
+    private static var beeTextureArray = [SKTexture]()
+    private static var beeImageArray = [UIImage]()
+    
     var currentImageIndex = 0;
     var movementDirection = MovementDirection.None
     
@@ -34,32 +36,38 @@ class Bee : SKSpriteNode
         let texture = SKTexture(imageNamed: "bee_00000")
         super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
-        if Bee.beeImageArray.isEmpty
+        if Bee.beeTextureArray.isEmpty
         {
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00000"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00001"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00002"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00003"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00004"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00005"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00006"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00007"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00008"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00009"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00010"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00011"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00012"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00013"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00014"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00015"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00016"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00017"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00018"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00019"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00020"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00021"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00022"))
-            Bee.beeImageArray.append(SKTexture(imageNamed: "bee_00023"))
+            
+            Bee.beeImageArray.append(UIImage(named: "bee_00000")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00001")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00002")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00003")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00004")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00005")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00006")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00007")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00008")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00009")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00010")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00011")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00012")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00013")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00014")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00015")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00016")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00017")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00018")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00019")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00020")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00021")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00022")!)
+            Bee.beeImageArray.append(UIImage(named: "bee_00023")!)
+            
+            for image in Bee.beeImageArray
+            {
+                Bee.beeTextureArray.append(SKTexture(image: image))
+            }
         }
     }
     
@@ -128,7 +136,7 @@ class Bee : SKSpriteNode
         currentImageIndex += 1
         currentImageIndex = currentImageIndex > 23 ? 0 : currentImageIndex
         
-        return Bee.beeImageArray[currentImageIndex]
+        return Bee.beeTextureArray[currentImageIndex]
     }
     
     func getPreviousImage() -> SKTexture
@@ -136,10 +144,10 @@ class Bee : SKSpriteNode
         currentImageIndex -= 1
         currentImageIndex = currentImageIndex < 0 ? 23 : currentImageIndex
         
-        return Bee.beeImageArray[currentImageIndex]
+        return Bee.beeTextureArray[currentImageIndex]
     }
     
-    func getCurrentImage() -> SKTexture
+    func getCurrentImage() -> UIImage
     {
         return Bee.beeImageArray[currentImageIndex]
     }

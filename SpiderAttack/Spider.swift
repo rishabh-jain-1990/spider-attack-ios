@@ -15,7 +15,8 @@ class Spider : SKSpriteNode
     
     let screenHeight :CGFloat
     let line :SKSpriteNode
-    private static var spiderImageArray = [SKTexture]()
+    private static var spiderTextureArray = [SKTexture]()
+    private static var spiderImageArray = [UIImage]()
     var currentImageIndex = 0;
     var countdown = 0
     let minSpeed : CGFloat
@@ -38,32 +39,37 @@ class Spider : SKSpriteNode
         let aspectRatio = size.width / size.height
         size = CGSize(width: width, height: width / aspectRatio)
         
-        if Spider.spiderImageArray.isEmpty
+        if Spider.spiderTextureArray.isEmpty
         {
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00000"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00001"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00002"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00003"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00004"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00005"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00006"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00007"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00008"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00009"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00010"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00011"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00012"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00013"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00014"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00015"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00016"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00017"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00018"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00019"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00020"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00021"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00022"))
-            Spider.spiderImageArray.append(SKTexture(imageNamed: "spider_00023"))
+            Spider.spiderImageArray.append(UIImage(named: "spider_00000")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00001")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00002")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00003")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00004")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00005")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00006")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00007")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00008")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00009")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00010")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00011")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00012")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00013")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00014")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00015")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00016")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00017")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00018")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00019")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00020")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00021")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00022")!)
+            Spider.spiderImageArray.append(UIImage(named: "spider_00023")!)
+            
+            for image in Spider.spiderImageArray
+            {
+                Spider.spiderTextureArray.append(SKTexture(image: image))
+            }
         }
     }
     
@@ -130,7 +136,7 @@ class Spider : SKSpriteNode
         currentImageIndex += 1
         currentImageIndex = currentImageIndex > 23 ? 0 : currentImageIndex
         
-        return Spider.spiderImageArray[currentImageIndex]
+        return Spider.spiderTextureArray[currentImageIndex]
     }
     
     func getPreviousImage() -> SKTexture
@@ -138,10 +144,10 @@ class Spider : SKSpriteNode
         currentImageIndex -= 1
         currentImageIndex = currentImageIndex < 0 ? 23 : currentImageIndex
         
-        return Spider.spiderImageArray[currentImageIndex]
+        return Spider.spiderTextureArray[currentImageIndex]
     }
     
-    func getCurrentImage() -> SKTexture
+    func getCurrentImage() -> UIImage
     {
         return Spider.spiderImageArray[currentImageIndex]
     }

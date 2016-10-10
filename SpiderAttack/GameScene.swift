@@ -22,13 +22,6 @@ class GameScene: SKScene {
     
     var gameState = GameState.NotStarted
     
-    struct PhysicsCategory {
-        static let None      : UInt32 = 0
-        static let All       : UInt32 = UInt32.max
-        static let Spider   : UInt32 = 0b1       // 1
-        static let Bee: UInt32 = 0b10      // 2
-    }
-    
     init(size :CGSize, gameResultDelegate :GameResult)
     {
         self.gameResultDelegate = gameResultDelegate
@@ -42,8 +35,8 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         backgroundColor = SKColor.clear
-//        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
-//        physicsWorld.contactDelegate = self
+        //        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        //        physicsWorld.contactDelegate = self
         
         spiderWidth = size.width / NUM_SPIDERS
         
@@ -90,40 +83,40 @@ class GameScene: SKScene {
         }
     }
     
-//    func didBegin(_ contact: SKPhysicsContact) {
-//        
-//        // 1
-//        var firstBody: SKPhysicsBody
-//        var secondBody: SKPhysicsBody
-//        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-//            firstBody = contact.bodyA
-//            secondBody = contact.bodyB
-//        } else {
-//            firstBody = contact.bodyB
-//            secondBody = contact.bodyA
-//        }
-//        
-//        // 2
-//        if ((firstBody.categoryBitMask & PhysicsCategory.Spider != 0) &&
-//            (secondBody.categoryBitMask & PhysicsCategory.Bee != 0)) {
-////             projectileDidCollideWithMonster(firstBody.node as! SKSpriteNode, monster: secondBody.node as! SKSpriteNode)
-//            
-//            //            if isPixelFromTextureTransparent((firstBody.node as! SKSpriteNode).texture!, position: contact.contactPoint)
-//            //            {
-//            //                if isPixelFromTextureTransparent((secondBody.node as! SKSpriteNode).texture!, position: contact.contactPoint)
-//            //                {
-//            //                }
-//            //            }
-//            
-//            //            performSelector(#selector(gameOver), withObject: nil, afterDelay: Double(0.01))
-//           // gameOver()
-//        }
-//    }
+    //    func didBegin(_ contact: SKPhysicsContact) {
+    //
+    //        // 1
+    //        var firstBody: SKPhysicsBody
+    //        var secondBody: SKPhysicsBody
+    //        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+    //            firstBody = contact.bodyA
+    //            secondBody = contact.bodyB
+    //        } else {
+    //            firstBody = contact.bodyB
+    //            secondBody = contact.bodyA
+    //        }
+    //
+    //        // 2
+    //        if ((firstBody.categoryBitMask & PhysicsCategory.Spider != 0) &&
+    //            (secondBody.categoryBitMask & PhysicsCategory.Bee != 0)) {
+    ////             projectileDidCollideWithMonster(firstBody.node as! SKSpriteNode, monster: secondBody.node as! SKSpriteNode)
+    //
+    //            //            if isPixelFromTextureTransparent((firstBody.node as! SKSpriteNode).texture!, position: contact.contactPoint)
+    //            //            {
+    //            //                if isPixelFromTextureTransparent((secondBody.node as! SKSpriteNode).texture!, position: contact.contactPoint)
+    //            //                {
+    //            //                }
+    //            //            }
+    //
+    //            //            performSelector(#selector(gameOver), withObject: nil, afterDelay: Double(0.01))
+    //           // gameOver()
+    //        }
+    //    }
     
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
-    
-        if gameState != GameState.Resumed        {
+        
+        if gameState != GameState.Resumed {
             return
         }
         
@@ -138,15 +131,16 @@ class GameScene: SKScene {
                 
                 for i in minX...maxX {
                     for j in Int(ceil(intersection.minY))...Int(ceil(intersection.maxY)) {
-                        let playerPoint = CGPoint(x: CGFloat(i), y: CGFloat(j))
-                        let spiderPoint = CGPoint(x: CGFloat(i), y: CGFloat(j))
-                        if (isPixelFromTextureNotTransparent(spider.getCurrentImage(), position: spiderPoint)) {
-                            if (isPixelFromTextureNotTransparent(player.getCurrentImage(), position: playerPoint)) {
+                        let scaledSpiderX = (CGFloat(i) - spider.frame.minX) / spider.size.width * spider.getCurrentImage().size.width
+                        let scaledSpiderY = (CGFloat(j) - spider.frame.minY) / spider.size.height * spider.getCurrentImage().size.height
+                        let scaledPlayerX = (CGFloat(i) - player.frame.minX) / player.size.width * player.getCurrentImage().size.width
+                        let scaledPlayerY = (CGFloat(j) - player.frame.minY) / player.size.height * player.getCurrentImage().size.height
+                        
+                        let playerPoint = CGPoint(x: CGFloat(scaledPlayerX), y: CGFloat(scaledPlayerY))
+                        let spiderPoint = CGPoint(x: CGFloat(scaledSpiderX), y: CGFloat(scaledSpiderY))
+                        if (spider.getCurrentImage().getPixelColor(pos: spiderPoint).cgColor.components?[3])! / 255 != 0 {
+                            if (player.getCurrentImage().getPixelColor(pos: playerPoint).cgColor.components?[3])! / 255 != 0 {
                                 gameOver()
-                                
-                                print(intersection)
-                                print(spider.frame)
-                                print(player.frame)
                                 return
                             }
                         }
@@ -168,34 +162,6 @@ class GameScene: SKScene {
             gameResultDelegate.gameOver()
         }
     }
-    
-    func isPixelFromTextureNotTransparent(_ texture: SKTexture, position: CGPoint) -> Bool {
-        let view = SKView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
-        let scene = SKScene(size: CGSize(width: 1, height: 1))
-        let sprite  = SKSpriteNode(texture: texture)
-        sprite.anchorPoint = CGPoint.zero
-        sprite.position = CGPoint(x: -floor(position.x), y: -floor(position.y))
-        scene.anchorPoint = CGPoint.zero
-        scene.addChild(sprite)
-        view.presentScene(scene)
-        var pixel: [UInt8] = [0, 0, 0, 0]
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let context = CGContext(data: &pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: bitmapInfo.rawValue);
-        UIGraphicsPushContext(context!);
-        view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        UIGraphicsPopContext()
-        //    return SKColor(red: CGFloat(pixel[0]) / 255.0, green: CGFloat(pixel[1]) / 255.0, blue: CGFloat(pixel[2]) / 255.0, alpha: CGFloat(pixel[3]) / 255.0)
-        
-        print(pixel)
-        print(position)
-        return pixel[3] / 255 != 0
-    }
-    
-    //    func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
-    //        print("Hit")
-    //        //        projectile.removeFromParent()
-    //        //        monster.removeFromParent()
-    //    }
     
     func getCountdownValue() -> Int
     {
@@ -294,12 +260,12 @@ class GameScene: SKScene {
             let width = spiderWidth / BEE_SIZE_DIVIDER
             let aspectRatio = player.size.width / player.size.height
             player.size = CGSize(width: width, height: width / aspectRatio)
-//            player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
-//            player.physicsBody?.isDynamic = true
-//            player.physicsBody?.categoryBitMask = PhysicsCategory.Bee
-//            player.physicsBody?.contactTestBitMask = PhysicsCategory.Spider
-//            player.physicsBody?.collisionBitMask = PhysicsCategory.None
-//            player.physicsBody?.usesPreciseCollisionDetection = true
+            //            player.physicsBody = SKPhysicsBody(texture: player.texture!, size: player.size)
+            //            player.physicsBody?.isDynamic = true
+            //            player.physicsBody?.categoryBitMask = PhysicsCategory.Bee
+            //            player.physicsBody?.contactTestBitMask = PhysicsCategory.Spider
+            //            player.physicsBody?.collisionBitMask = PhysicsCategory.None
+            //            player.physicsBody?.usesPreciseCollisionDetection = true
             addChild(player)
         }
         
@@ -326,16 +292,41 @@ class GameScene: SKScene {
             spiderArray.append(Spider(width: spiderWidth, screenHeight: size.height, line: line))
             spiderArray[i].zPosition = 4
             spiderArray[i].position = CGPoint(x: x, y: size.height)
-//            spiderArray[i].physicsBody = SKPhysicsBody(texture: spiderArray[i].texture!, size: spiderArray[i].size) // 1
-//            spiderArray[i].physicsBody?.isDynamic = true // 2
-//            spiderArray[i].physicsBody?.categoryBitMask = PhysicsCategory.Spider // 3
-//            spiderArray[i].physicsBody?.contactTestBitMask = PhysicsCategory.Bee // 4
-//            spiderArray[i].physicsBody?.collisionBitMask = PhysicsCategory.None // 5
+            //            spiderArray[i].physicsBody = SKPhysicsBody(texture: spiderArray[i].texture!, size: spiderArray[i].size) // 1
+            //            spiderArray[i].physicsBody?.isDynamic = true // 2
+            //            spiderArray[i].physicsBody?.categoryBitMask = PhysicsCategory.Spider // 3
+            //            spiderArray[i].physicsBody?.contactTestBitMask = PhysicsCategory.Bee // 4
+            //            spiderArray[i].physicsBody?.collisionBitMask = PhysicsCategory.None // 5
             spiderArray[i].isHidden = true
             addChild(spiderArray[i])
             addChild(line)
             
             spiderArray[i].startTimer(countdown: getCountdownValue())
         }
+    }
+}
+
+extension UIImage {
+    func getPixelColor(pos: CGPoint) -> UIColor {
+        
+        let xCoordinate = CGFloat(pos.x) * (CGFloat((self.cgImage?.width)!) / self.size.width)
+        let yCoordinate = CGFloat(pos.y) * (CGFloat((self.cgImage?.height)!) / self.size.height)
+        
+        if xCoordinate > CGFloat((self.cgImage?.width)!) || yCoordinate > CGFloat((self.cgImage?.height)!)
+        {
+            return UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        }
+        
+        let pixelData = self.cgImage!.dataProvider!.data
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)!
+        
+        let pixelInfo: Int = ((Int(self.size.width) * Int(yCoordinate)) + Int(xCoordinate)) * 4
+        
+        let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
+        let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
+        let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
+        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+        
+        return UIColor(red: r, green: g, blue: b, alpha: a)
     }
 }
