@@ -315,7 +315,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             defaults.synchronize()
         }
         
-        let shareText = String(format: "Try and beat my high score of %02d : %02d at Spider Attack https://goo.gl/bOhbH3", arguments:[defaults.integer(forKey: HIGHSCORE_KEY) / 60, defaults.integer(forKey: HIGHSCORE_KEY) % 60])
+        let shareText = String(format: "Try and beat my high score of %02d : %02d at Spider Attack itms-apps://itunes.apple.com/app/id1160146438", arguments:[defaults.integer(forKey: HIGHSCORE_KEY) / 60, defaults.integer(forKey: HIGHSCORE_KEY) % 60])
         
         let vc = UIActivityViewController(activityItems: [shareText], applicationActivities: [])
         
