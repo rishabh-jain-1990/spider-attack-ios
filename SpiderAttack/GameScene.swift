@@ -120,11 +120,11 @@ class GameScene: SKScene {
             return
         }
         
-        for spider in spiderArray
+        for spider in self.spiderArray
         {
-            if(spider.frame.intersects(player.frame))
+            if(spider.frame.intersects(self.player.frame))
             {
-                let intersection = spider.frame.intersection(player.frame)
+                let intersection = spider.frame.intersection(self.player.frame)
                 
                 let minX = Int(ceil(intersection.minX))
                 let maxX = Int(ceil(intersection.maxX))
@@ -133,14 +133,14 @@ class GameScene: SKScene {
                     for j in Int(ceil(intersection.minY))...Int(ceil(intersection.maxY)) {
                         let scaledSpiderX = (CGFloat(i) - spider.frame.minX) / spider.size.width * spider.getCurrentImage().size.width
                         let scaledSpiderY = (CGFloat(j) - spider.frame.minY) / spider.size.height * spider.getCurrentImage().size.height
-                        let scaledPlayerX = (CGFloat(i) - player.frame.minX) / player.size.width * player.getCurrentImage().size.width
-                        let scaledPlayerY = (CGFloat(j) - player.frame.minY) / player.size.height * player.getCurrentImage().size.height
+                        let scaledPlayerX = (CGFloat(i) - self.player.frame.minX) / self.player.size.width * self.player.getCurrentImage().size.width
+                        let scaledPlayerY = (CGFloat(j) - self.player.frame.minY) / self.player.size.height * self.player.getCurrentImage().size.height
                         
                         let playerPoint = CGPoint(x: CGFloat(scaledPlayerX), y: CGFloat(scaledPlayerY))
                         let spiderPoint = CGPoint(x: CGFloat(scaledSpiderX), y: CGFloat(scaledSpiderY))
                         if (spider.getCurrentImage().getPixelColor(pos: spiderPoint).cgColor.components?[3])! / 255 != 0 {
-                            if (player.getCurrentImage().getPixelColor(pos: playerPoint).cgColor.components?[3])! / 255 != 0 {
-                                gameOver()
+                            if (self.player.getCurrentImage().getPixelColor(pos: playerPoint).cgColor.components?[3])! / 255 != 0 {
+                                self.gameOver()
                                 return
                             }
                         }
@@ -312,7 +312,7 @@ extension UIImage {
         let xCoordinate = CGFloat(pos.x) * (CGFloat((self.cgImage?.width)!) / self.size.width)
         let yCoordinate = CGFloat(pos.y) * (CGFloat((self.cgImage?.height)!) / self.size.height)
         
-        if xCoordinate > CGFloat((self.cgImage?.width)!) || yCoordinate > CGFloat((self.cgImage?.height)!)
+        if xCoordinate > CGFloat((self.cgImage?.width)!) || yCoordinate > CGFloat((self.cgImage?.height)!) || xCoordinate < 0 || yCoordinate < 0
         {
             return UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         }

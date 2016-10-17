@@ -34,6 +34,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
     @IBOutlet weak var muteTextButton: UIButton!
     @IBOutlet weak var muteImageButton: UIButton!
     @IBOutlet weak var adView: GADBannerView!
+    @IBOutlet weak var countdownLabel: UILabel!
     
     var scene : GameScene!
     var gameState = GameState.NotStarted
@@ -46,6 +47,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
     var gameOverSoundPlayer = AVPlayer()
     var gcDefaultLeaderBoard = ""
     var gcEnabled = false
+    var countdown : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -366,6 +368,26 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
+    func resumePlay()
+    {
+        if countdown > 0
+        {
+            countdownLabel.text = String(countdown)
+            countdown = countdown - 1
+            perform(#selector(resumePlay), with: nil, afterDelay: 1)
+            return
+        }
+        
+        countdownLabel.isHidden = true
+        if(scene != nil)
+        {
+            scene.unpause()
+        }
+        
+        playBackgroundSound()
+        scoreTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+    }
+    
     @IBAction func pauseGame(_ sender: UITapGestureRecognizer) {
         pauseGameScene()
     }
@@ -387,17 +409,12 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             scoreTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
         case GameState.Paused:
             // TODO: Start countdown
+            countdown = 3
+            countdownLabel.isHidden = false
             gameState = GameState.Resumed
-            
-            if(scene != nil)
-            {
-                scene.unpause()
-                scoreboardView.isHidden = true
-                adView.isHidden = true
-            }
-            
-            playBackgroundSound()
-            scoreTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector: #selector(updateScore), userInfo: nil, repeats: true)
+            scoreboardView.isHidden = true
+            adView.isHidden = true
+            resumePlay()
         case GameState.Over:
             gameState = GameState.Resumed
             
