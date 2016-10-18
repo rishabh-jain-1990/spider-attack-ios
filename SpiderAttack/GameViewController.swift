@@ -328,7 +328,6 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
     
     func rateGame()
     {
-        
         UIApplication.shared.open(NSURL(string:"itms-apps://itunes.apple.com/app/id1160146438") as! URL, options: [:], completionHandler: nil)
     }
     

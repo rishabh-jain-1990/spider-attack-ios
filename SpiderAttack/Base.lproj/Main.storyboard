@@ -37,11 +37,6 @@
                                     <constraint firstAttribute="height" constant="128" id="mm3-Qc-HXW"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7L7-fp-ydh">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="s7m-1s-1B8"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITw-9E-uK4">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
@@ -69,22 +64,18 @@
                             <constraint firstItem="bjS-Pb-DMx" firstAttribute="top" secondItem="zXx-nn-1wu" secondAttribute="bottom" constant="20" id="A34-22-TdR"/>
                             <constraint firstItem="ITw-9E-uK4" firstAttribute="centerX" secondItem="A3J-1V-Hse" secondAttribute="centerX" constant="60" id="AMh-lY-inf"/>
                             <constraint firstItem="aOF-Pm-ZtL" firstAttribute="top" secondItem="DZM-0r-ffv" secondAttribute="bottom" id="BE1-JW-Gxb"/>
-                            <constraint firstItem="zXx-nn-1wu" firstAttribute="centerX" secondItem="7L7-fp-ydh" secondAttribute="centerX" id="EeK-ca-HBe"/>
                             <constraint firstItem="ITw-9E-uK4" firstAttribute="width" secondItem="bjS-Pb-DMx" secondAttribute="width" id="GQE-Y6-qrW"/>
                             <constraint firstItem="leb-4O-tdt" firstAttribute="leading" secondItem="DZM-0r-ffv" secondAttribute="leading" id="Guy-YA-Fz2"/>
                             <constraint firstItem="leb-4O-tdt" firstAttribute="bottom" secondItem="aOF-Pm-ZtL" secondAttribute="top" id="HW1-x5-Hke"/>
-                            <constraint firstItem="leb-4O-tdt" firstAttribute="centerX" secondItem="7L7-fp-ydh" secondAttribute="centerX" id="HWq-ZS-O6q"/>
                             <constraint firstItem="ITw-9E-uK4" firstAttribute="top" secondItem="bjS-Pb-DMx" secondAttribute="top" id="NBo-Qt-Y3u"/>
                             <constraint firstItem="leb-4O-tdt" firstAttribute="trailing" secondItem="DZM-0r-ffv" secondAttribute="trailing" id="Q7G-Uv-mc5"/>
                             <constraint firstAttribute="trailing" secondItem="DZM-0r-ffv" secondAttribute="trailing" id="REb-IS-gdV"/>
                             <constraint firstItem="ITw-9E-uK4" firstAttribute="height" secondItem="bjS-Pb-DMx" secondAttribute="height" id="Ryh-Zx-VBE"/>
                             <constraint firstItem="XJg-OR-rxA" firstAttribute="leading" secondItem="A3J-1V-Hse" secondAttribute="leading" id="SAo-42-Y7l"/>
-                            <constraint firstItem="zXx-nn-1wu" firstAttribute="top" secondItem="7L7-fp-ydh" secondAttribute="bottom" constant="36" id="UYx-4o-M2F"/>
                             <constraint firstItem="zXx-nn-1wu" firstAttribute="leading" secondItem="bjS-Pb-DMx" secondAttribute="trailing" constant="-77" id="ZbQ-b4-rdf"/>
                             <constraint firstItem="bjS-Pb-DMx" firstAttribute="centerX" secondItem="A3J-1V-Hse" secondAttribute="centerX" id="b38-41-Y4q"/>
                             <constraint firstItem="leb-4O-tdt" firstAttribute="top" secondItem="DZM-0r-ffv" secondAttribute="top" id="cEP-jT-lPz"/>
                             <constraint firstItem="ITw-9E-uK4" firstAttribute="bottom" secondItem="bjS-Pb-DMx" secondAttribute="bottom" id="hJS-XZ-Awo"/>
-                            <constraint firstItem="7L7-fp-ydh" firstAttribute="top" secondItem="Xj2-XU-BXK" secondAttribute="bottom" constant="109" id="imc-D5-xgQ"/>
                             <constraint firstItem="bjS-Pb-DMx" firstAttribute="centerX" secondItem="A3J-1V-Hse" secondAttribute="centerX" constant="-60" id="ly6-e3-ZZZ"/>
                             <constraint firstItem="DZM-0r-ffv" firstAttribute="top" secondItem="A3J-1V-Hse" secondAttribute="top" id="nms-Bx-w4r"/>
                             <constraint firstItem="zXx-nn-1wu" firstAttribute="centerY" secondItem="leb-4O-tdt" secondAttribute="centerY" id="tmp-Gy-jnA"/>
