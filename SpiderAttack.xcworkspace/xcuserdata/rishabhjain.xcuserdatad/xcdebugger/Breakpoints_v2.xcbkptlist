@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpiderAttack/GameViewController.swift"
-            timestampString = "498484354.77605"
+            timestampString = "498485776.386018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "339"
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpiderAttack/GameViewController.swift"
-            timestampString = "498484354.77605"
+            timestampString = "498485776.386018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "395"
-            endingLineNumber = "395"
+            startingLineNumber = "396"
+            endingLineNumber = "396"
             landmarkName = "playButtonPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpiderAttack/GameViewController.swift"
-            timestampString = "498484354.77605"
+            timestampString = "498485776.386018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "resumePlay()"
             landmarkType = "7">
          </BreakpointContent>
@@ -230,7 +230,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpiderAttack/SplashViewController.swift"

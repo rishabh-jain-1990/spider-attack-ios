@@ -337,6 +337,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
         localPlayer.authenticateHandler = {(ViewController, error) -> Void in
             if((ViewController) != nil) {
                 // 1 Show login if player is not logged in
+                self.pauseGameScene()
                 self.present(ViewController!, animated: true, completion: nil)
             } else if (localPlayer.isAuthenticated) {
                 // 2 Player is already euthenticated & logged in, load game center
