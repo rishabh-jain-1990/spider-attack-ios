@@ -346,7 +346,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
                 // Get the default leaderboard ID
                 localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer: String?, error: Error?) -> Void in
                     if error != nil {
-                        print(error)
+                        print(error ?? "Cannot decode error message")
                     } else {
                         self.gcDefaultLeaderBoard = leaderboardIdentifer!
                     }
@@ -357,7 +357,7 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
                 // 3 Game center is not enabled on the users device
                 self.gcEnabled = false
                 print("Local player could not be authenticated, disabling game center")
-                print(error)
+                print(error ?? "Cannot decode error message")
             }
             
         }

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LwR-wd-5fM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LwR-wd-5fM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,23 +24,29 @@
                         <viewControllerLayoutGuide type="bottom" id="aOF-Pm-ZtL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A3J-1V-Hse">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="DZM-0r-ffv"/>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_web.png" translatesAutoresizingMaskIntoConstraints="NO" id="leb-4O-tdt"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="DZM-0r-ffv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_web.png" translatesAutoresizingMaskIntoConstraints="NO" id="leb-4O-tdt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grass.png" translatesAutoresizingMaskIntoConstraints="NO" id="XJg-OR-rxA">
+                                <rect key="frame" x="0.0" y="560" width="600" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="vrP-h4-JJV"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spider_attack_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="zXx-nn-1wu">
+                                <rect key="frame" x="88.5" y="203" width="423" height="134"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="bJZ-PU-YrI"/>
-                                    <constraint firstAttribute="height" constant="128" id="mm3-Qc-HXW"/>
+                                    <constraint firstAttribute="width" secondItem="zXx-nn-1wu" secondAttribute="height" multiplier="423:134" id="0QN-mU-mOO"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITw-9E-uK4">
+                                <rect key="frame" x="331" y="357" width="58" height="58"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
                                 <state key="normal" image="help.png"/>
@@ -46,6 +55,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjS-Pb-DMx">
+                                <rect key="frame" x="211" y="357" width="58" height="58"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="XJx-Hw-kHh"/>
@@ -78,18 +88,20 @@
                             <constraint firstItem="ITw-9E-uK4" firstAttribute="bottom" secondItem="bjS-Pb-DMx" secondAttribute="bottom" id="hJS-XZ-Awo"/>
                             <constraint firstItem="bjS-Pb-DMx" firstAttribute="centerX" secondItem="A3J-1V-Hse" secondAttribute="centerX" constant="-60" id="ly6-e3-ZZZ"/>
                             <constraint firstItem="DZM-0r-ffv" firstAttribute="top" secondItem="A3J-1V-Hse" secondAttribute="top" id="nms-Bx-w4r"/>
-                            <constraint firstItem="zXx-nn-1wu" firstAttribute="centerY" secondItem="leb-4O-tdt" secondAttribute="centerY" id="tmp-Gy-jnA"/>
+                            <constraint firstItem="zXx-nn-1wu" firstAttribute="centerY" secondItem="leb-4O-tdt" secondAttribute="centerY" constant="-30" id="tmp-Gy-jnA"/>
                             <constraint firstItem="zXx-nn-1wu" firstAttribute="centerX" secondItem="leb-4O-tdt" secondAttribute="centerX" id="va8-Qt-GlL"/>
                             <constraint firstItem="DZM-0r-ffv" firstAttribute="leading" secondItem="A3J-1V-Hse" secondAttribute="leading" id="vcx-ch-SnX"/>
                             <constraint firstAttribute="trailing" secondItem="XJg-OR-rxA" secondAttribute="trailing" id="znx-Mq-rCe"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ZbQ-b4-rdf"/>
                                 <exclude reference="b38-41-Y4q"/>
+                                <exclude reference="ZbQ-b4-rdf"/>
                             </mask>
                         </variation>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="helpButton" destination="ITw-9E-uK4" id="fgx-QJ-sse"/>
                         <outlet property="playButton" destination="bjS-Pb-DMx" id="Toe-Ya-ag6"/>
@@ -97,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pku-2L-psg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-263" y="408"/>
+            <point key="canvasLocation" x="-648" y="362"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -108,17 +120,23 @@
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oyu-Ql-tzt"/>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_web.png" translatesAutoresizingMaskIntoConstraints="NO" id="j9T-mz-lRg"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oyu-Ql-tzt">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black_web.png" translatesAutoresizingMaskIntoConstraints="NO" id="j9T-mz-lRg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uN6-sY-FHb">
+                                <rect key="frame" x="0.0" y="540" width="120" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="25" minY="5" maxX="25" maxY="5"/>
                                 <state key="normal" image="arrow_left.png"/>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hh2-o2-IAH">
+                                <rect key="frame" x="480" y="540" width="120" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hh2-o2-IAH" secondAttribute="height" constant="60" id="Zek-uh-tmA"/>
@@ -127,12 +145,14 @@
                                 <state key="normal" image="arrow_right.png"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score-  00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmt-oI-nfG">
+                                <rect key="frame" x="120" y="540" width="360" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.92295258619999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="27"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTe-Ft-QRy" customClass="GADBannerView">
+                                <rect key="frame" x="140" y="550" width="320" height="50"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5Mm-5w-PXa"/>
@@ -140,25 +160,31 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T59-xo-AR1" customClass="GameView" customModule="SpiderAttack" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pgz-G8-a3K">
+                                        <rect key="frame" x="137.5" y="175" width="325" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBa-9G-y7I">
+                                                <rect key="frame" x="107" y="20" width="111" height="42.5"/>
                                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="41"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score- 00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vz-nd-Bku">
+                                                <rect key="frame" x="98" y="111.5" width="129" height="29"/>
                                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="28"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Score- 00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-NI-eOy">
+                                                <rect key="frame" x="84.5" y="72.5" width="156" height="29"/>
                                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="28"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHL-4l-l5s">
+                                                <rect key="frame" x="258" y="160.5" width="45" height="45"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="45" id="tEl-El-ide"/>
@@ -168,6 +194,7 @@
                                                 <state key="normal" image="leaderboard.png"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKV-gE-ntR">
+                                                <rect key="frame" x="77" y="160.5" width="45" height="45"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="G8L-SV-t9j"/>
@@ -177,6 +204,7 @@
                                                 <state key="normal" image="rate.png"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvO-H5-tG4">
+                                                <rect key="frame" x="23" y="160.5" width="45" height="45"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="P3d-cX-hMh"/>
@@ -186,24 +214,28 @@
                                                 <state key="normal" image="share.png"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="xuT-8G-Jao">
+                                                <rect key="frame" x="23" y="203.5" width="45" height="30"/>
                                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="17"/>
                                                 <state key="normal" title="Share">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="E1L-Cl-VJY">
+                                                <rect key="frame" x="77" y="203.5" width="45" height="30"/>
                                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="17"/>
                                                 <state key="normal" title="Rate">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-ay-wUJ">
+                                                <rect key="frame" x="258" y="203.5" width="45" height="30"/>
                                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="17"/>
                                                 <state key="normal" title="Leader Board">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwf-xY-Af8">
+                                                <rect key="frame" x="203" y="160.5" width="45" height="45"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="45" id="Bqf-az-ewh"/>
@@ -217,6 +249,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ga-0h-H8Z">
+                                                <rect key="frame" x="130" y="160.5" width="65" height="65"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="65" id="ky2-oA-cUq"/>
@@ -229,6 +262,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="c9L-VU-x4o">
+                                                <rect key="frame" x="203" y="203.5" width="45" height="30"/>
                                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="17"/>
                                                 <state key="normal" title="Sound Off">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -274,10 +308,10 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="2Bf-F0-mih"/>
                                                 <exclude reference="yxG-hZ-3uT"/>
-                                                <exclude reference="Hxb-zc-S2N"/>
                                                 <exclude reference="Uul-Hm-W4I"/>
+                                                <exclude reference="Hxb-zc-S2N"/>
+                                                <exclude reference="2Bf-F0-mih"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -289,13 +323,14 @@
                                 </connections>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Je4-nx-L3x">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="277.5" y="247.5" width="45" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="6bo-SS-H7s"/>
                                     <constraint firstAttribute="height" constant="45" id="fck-Y0-Cq7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="CreepyCrawlers" family="Creepy Crawlers" pointSize="45"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -340,11 +375,11 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="wwR-vs-vc1"/>
+                                <exclude reference="ya4-og-Xom"/>
                                 <exclude reference="LZW-5v-La5"/>
                                 <exclude reference="gKU-o4-Ykg"/>
                                 <exclude reference="o7B-Zf-ED1"/>
                                 <exclude reference="KAA-yF-KrR"/>
-                                <exclude reference="ya4-og-Xom"/>
                             </mask>
                         </variation>
                     </view>
@@ -388,12 +423,14 @@
                         <viewControllerLayoutGuide type="bottom" id="aSL-ja-yf2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LaZ-hY-2zx">
-                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="gbh-1o-Ngs"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="gbh-1o-Ngs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FVW-9t-lM2">
-                                <frame key="frameInset" minX="10" minY="20" width="80" height="30"/>
+                                <rect key="frame" x="10" y="20" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="BACK">
