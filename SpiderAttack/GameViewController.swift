@@ -113,9 +113,9 @@ class GameViewController: UIViewController, GameResult, GKGameCenterControllerDe
             let size = CGSize(width: skView.bounds.size.width, height: skView.bounds.size.height - ((UIDevice.current.userInterfaceIdiom == .phone ? 4 : 2) * leftArrow.bounds.size.height))
             scene = GameScene(size: size, gameResultDelegate: self)
             skView.allowsTransparency = true
-            skView.showsFPS = true
+            skView.showsFPS = false
             
-            skView.showsNodeCount = true
+            skView.showsNodeCount = false
             
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true

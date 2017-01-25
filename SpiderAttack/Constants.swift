@@ -18,7 +18,7 @@ let BEE_SIZE_DIVIDER : CGFloat = 2.7
 let BEE_BITMAP = "Bee bitmap key"
 
 let SPIDER_BITMAP = "spider bitmap key"
-let LEVEL_UP_TIME = 90
+let LEVEL_UP_TIME = 60
 
 let ROOKIE_TIME_THRESHOLD = 30
 let BEGINNER_TIME_THRESHOLD = 60

@@ -33,7 +33,6 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
-        
         backgroundColor = SKColor.clear
         //        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         //        physicsWorld.contactDelegate = self
